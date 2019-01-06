@@ -17,10 +17,9 @@ public abstract class Score extends Storable { // a score belonging to a meet an
 
 	public Score(StorableStruct struct, String meetID, String studentID, Object... values) {
 
-		super(struct, values);
-
-		register(COLUMN_MEET_ID, meetID);
-		register(COLUMN_ATHLETE_ID, studentID);
+		super(struct, values,
+		      COLUMN_MEET_ID, meetID,
+		      COLUMN_ATHLETE_ID, studentID); // don't really need to be passed into constructor since there's no generateID or something that'll need them ASAP, but I think it's best to pass values in ASAP anyways.
 
 	}
 

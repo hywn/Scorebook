@@ -11,7 +11,7 @@ public class ScoreDiscus extends Score { // TODO: one day it would be nice to ha
 		new StorableStruct("score_discus", rs -> new ScoreDiscus(rs));
 
 	public final static String
-		COLUMN_ORDER = "order",
+		COLUMN_ORDER = "ord", // "order" is a keyword and sql and needs to be escaped; just avoid it altogether
 		COLUMN_DISTANCE = "distance";
 
 	public ScoreDiscus(ResultSet rs) { super(STRUCT, rs); }

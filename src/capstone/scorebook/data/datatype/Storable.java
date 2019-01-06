@@ -15,19 +15,33 @@ public abstract class Storable {
 
 	public Storable(StorableStruct struct) { this.struct = struct; }
 
+	public Storable(StorableStruct struct, Object[] values, Object... append) {
+
+		this(struct, values);
+
+		addValues(append);
+
+	}
+
 	public Storable(StorableStruct struct, Object... values) {
 
 		this(struct);
 
 		this.values = new HashMap();
 
-		for (int i = 0; i < values.length; i++) {
+		addValues(values);
+
+	}
+
+	private void addValues(Object[] array) {
+
+		for (int i = 0; i < array.length; i++) {
 
 			// get key
-			if (!(values[i] instanceof String))
+			if (!(array[i] instanceof String))
 				throw new IllegalArgumentException(); // error if not a String key
 
-			this.values.put((String) values[i++], values[i]);
+			values.put((String) array[i++], array[i]);
 
 		}
 

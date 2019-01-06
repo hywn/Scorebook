@@ -14,11 +14,19 @@ public abstract class IDStorable extends Storable {
 
 	public IDStorable(StorableStruct struct, ResultSet rs) { super(struct, rs); }
 
+	public IDStorable(StorableStruct struct, Object[] values, Object... append) {
+
+		super(struct, values, append);
+
+		register(COLUMN_ID, generateID()); // must register after constructor because requires all possible info/values to be registered
+
+	}
+
 	public IDStorable(StorableStruct struct, Object... values) {
 
 		super(struct, values);
 
-		register(COLUMN_ID, generateID());
+		register(COLUMN_ID, generateID()); // must register after constructor because requires all possible info/values to be registered
 
 	}
 

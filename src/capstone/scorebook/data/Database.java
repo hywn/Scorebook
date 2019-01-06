@@ -22,7 +22,7 @@ public class Database {
 
 	public void execute(String... sqls) {
 
-		for (String sql : sqls) System.out.println(sql);
+		for (String sql : sqls) System.out.println(sql); // for debugging; remove when not debugging
 
 		try {
 
@@ -39,6 +39,8 @@ public class Database {
 	}
 
 	public <T extends Storable> ArrayList<T> query(StorableStruct struct, String sql) {
+
+		System.out.println(sql); // for debugging; remove when not debugging
 
 		ArrayList<T> list = new ArrayList();
 
@@ -64,6 +66,10 @@ public class Database {
 	private <T extends Storable> ArrayList<T> querySelectAll(StorableStruct struct) { return query(struct, "select * from " + struct.TABLE); }
 	public ArrayList<Address> getAllAddresses() { return querySelectAll(Address.STRUCT); }
 	public ArrayList<Athlete> getAllAthletes() { return querySelectAll(Athlete.STRUCT); }
+	public ArrayList<Meet> getAllMeets() { return querySelectAll(Meet.STRUCT); }
+	public ArrayList<School> getAllSchools() { return querySelectAll(School.STRUCT); }
+
+	// scores and weather should always be selected by meet/student
 
 	// query by ID methods
 	public Address getAddress(String aid) { return IDStorable.querySelectByID(this, Address.STRUCT, aid); }

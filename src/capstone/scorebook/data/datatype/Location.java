@@ -14,9 +14,7 @@ public abstract class Location extends IDStorable { // something that has an add
 
 	public Location(StorableStruct struct, String addressID, Object... values) {
 
-		super(struct, values);
-
-		register(COLUMN_ADDRESS_ID, addressID);
+		super(struct, values, COLUMN_ADDRESS_ID, addressID); // must pass directly into constructor because IDStorable might need this info for generating an ID
 
 	}
 
