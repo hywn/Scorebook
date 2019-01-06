@@ -1,13 +1,27 @@
+package capstone.scorebook.data.datatype;
+
+import capstone.scorebook.data.Database;
+import capstone.scorebook.data.StorableStruct;
+import capstone.scorebook.Util;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
 public abstract class Storable {
 
-	private StorableStruct struct; // useful information used with Database like what table this thing goes in
+	private StorableStruct struct; // useful information used with capstone.scorebook.data.Database like what table this thing goes in
 	private HashMap<String, Object> values; // I think this is better than actual variables
 
 	public Storable(StorableStruct struct) { this.struct = struct; }
+
+	public Storable(StorableStruct struct, Object[] values, Object... append) {
+
+		this(struct, values);
+
+		addValues(append);
+
+	}
 
 	public Storable(StorableStruct struct, Object... values) {
 
@@ -15,13 +29,19 @@ public abstract class Storable {
 
 		this.values = new HashMap();
 
-		for (int i = 0; i < values.length; i++) {
+		addValues(values);
+
+	}
+
+	private void addValues(Object[] array) {
+
+		for (int i = 0; i < array.length; i++) {
 
 			// get key
-			if (!(values[i] instanceof String))
+			if (!(array[i] instanceof String))
 				throw new IllegalArgumentException(); // error if not a String key
 
-			this.values.put((String) values[i++], values[i]);
+			values.put((String) array[i++], array[i]);
 
 		}
 
@@ -115,7 +135,7 @@ public abstract class Storable {
 
 	protected StorableStruct getStruct() { return struct; }
 
-	protected HashMap<String, Object> getValues() { return values; }
+	protected HashMap<String, Object> getRawValues() { return values; }
 
 	protected void register(String key, Object value) {values.put(key, value); } // should be used extremely rarely
 

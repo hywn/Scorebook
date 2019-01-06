@@ -1,3 +1,5 @@
+package capstone.scorebook;
+
 public class Util {
 
 	private static char QUOTE = '\''; // might be better to use ``?
@@ -40,5 +42,8 @@ public class Util {
 		return b.toString();
 
 	}
+
+	// converts int to boolean
+	public static boolean toBoolean(int integer) { return integer == 1; }
 
 }
