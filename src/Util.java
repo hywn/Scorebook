@@ -41,4 +41,7 @@ public class Util {
 
 	}
 
+	// converts int to boolean
+	public static boolean toBoolean(int integer) { return integer == 1; }
+
 }

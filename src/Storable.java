@@ -115,7 +115,7 @@ public abstract class Storable {
 
 	protected StorableStruct getStruct() { return struct; }
 
-	protected HashMap<String, Object> getValues() { return values; }
+	protected HashMap<String, Object> getRawValues() { return values; }
 
 	protected void register(String key, Object value) {values.put(key, value); } // should be used extremely rarely
 

@@ -31,7 +31,7 @@ public class Database {
 
 	}
 
-	private <T extends Storable> ArrayList<T> query(StorableStruct struct, String sql) {
+	public <T extends Storable> ArrayList<T> query(StorableStruct struct, String sql) {
 
 		ArrayList<T> list = new ArrayList();
 
@@ -53,28 +53,15 @@ public class Database {
 
 	}
 
-	// implement every single one
+	// select all records methods
 	private <T extends Storable> ArrayList<T> querySelectAll(StorableStruct struct) { return query(struct, "select * from " + struct.TABLE); }
-
 	public ArrayList<Address> getAllAddresses() { return querySelectAll(Address.STRUCT); }
 	public ArrayList<Athlete> getAllAthletes() { return querySelectAll(Athlete.STRUCT); }
 
-
-	// TODO: enforce only query if struct is type IDStorable
-	private <T extends Storable> T querySelectByID(StorableStruct struct, String id) { // select * from ___ where ___=___
-
-		StringBuilder query = new StringBuilder("select * from "); query.append(struct.TABLE); query.append(" where "); // select * from ___ where
-		Util.appendCleanEquals(query, IDStorable.COLUMN_ID, id); // ___=___
-
-		ArrayList<T> results = query(struct, query.toString());
-
-		if (results.size() == 0) return null;
-
-		return results.get(0); // this should always work; there will always be either 0 or 1 matching entries assuming the database is properly set up because PRIMARY KEY will always enforce UNIQUE
-
-	}
-
-	public Address getAddress(String aid) { return querySelectByID(Address.STRUCT, aid); }
-	public Athlete getAthlete(String tid) { return querySelectByID(Athlete.STRUCT, tid); }
+	// query by ID methods
+	public Address getAddress(String aid) { return IDStorable.querySelectByID(this, Address.STRUCT, aid); }
+	public Athlete getAthlete(String tid) { return IDStorable.querySelectByID(this, Athlete.STRUCT, tid); }
+	public Meet getMeet(String mid) { return IDStorable.querySelectByID(this, Meet.STRUCT, mid); }
+	public School getSchool(String sid) { return IDStorable.querySelectByID(this, School.STRUCT, sid); }
 
 }

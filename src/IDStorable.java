@@ -1,11 +1,12 @@
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class IDStorable extends Storable {
 
-	public static final String COLUMN_ID = "id"; // column names
+	private static final String COLUMN_ID = "id"; // column names
 
-	public IDStorable(StorableStruct struct, ResultSet resultSet) { super(struct, resultSet); }
+	public IDStorable(StorableStruct struct, ResultSet rs) { super(struct, rs); }
 
 	public IDStorable(StorableStruct struct, Object... values) {
 
@@ -22,7 +23,7 @@ public abstract class IDStorable extends Storable {
 	// update this thing in the database
 	public void update(Database db) {
 
-		HashMap<String, Object> values = getValues();
+		HashMap<String, Object> values = getRawValues();
 
 		// update ___ set ___=___, ___=___ ... where ___=___;
 
@@ -44,6 +45,21 @@ public abstract class IDStorable extends Storable {
 		b.append(" where "); Util.appendCleanEquals(b, COLUMN_ID, getID()); // where ___=___
 
 		db.execute(b.toString());
+
+	}
+
+	// TODO: make Util methods for repeated stuff like where clauses
+
+	public static <T extends IDStorable> T querySelectByID(Database db, StorableStruct struct, String id) { // select * from ___ where ___=___
+
+		StringBuilder query = new StringBuilder("select * from "); query.append(struct.TABLE); query.append(" where "); // select * from ___ where
+		Util.appendCleanEquals(query, COLUMN_ID, id); // ___=___
+
+		ArrayList<T> results = db.query(struct, query.toString());
+
+		if (results.size() == 0) return null;
+
+		return results.get(0); // this should always work; there will always be either 0 or 1 matching entries assuming the database is properly set up because PRIMARY KEY will always enforce UNIQUE
 
 	}
 
