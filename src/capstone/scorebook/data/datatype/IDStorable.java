@@ -1,3 +1,9 @@
+package capstone.scorebook.data.datatype;
+
+import capstone.scorebook.data.Database;
+import capstone.scorebook.data.StorableStruct;
+import capstone.scorebook.Util;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +54,7 @@ public abstract class IDStorable extends Storable {
 
 	}
 
-	// TODO: make Util methods for repeated stuff like where clauses
+	// TODO: make capstone.scorebook.Util methods for repeated stuff like where clauses
 
 	public static <T extends IDStorable> T querySelectByID(Database db, StorableStruct struct, String id) { // select * from ___ where ___=___
 

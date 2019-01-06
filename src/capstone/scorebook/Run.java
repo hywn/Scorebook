@@ -1,6 +1,8 @@
+package capstone.scorebook;
+
+import capstone.scorebook.data.Database;
+
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Run {
 
@@ -18,7 +20,7 @@ public class Run {
 
 		}
 
-		//new Athlete("whs", 2018, "Sally Ajkflds").insert(db); // this is example insert. don't uncomment it though because it'll throw an error because the database will complain about non-unique IDs.
+		//new capstone.scorebook.data.concrete.Athlete("whs", 2018, "Sally Ajkflds").insert(db); // this is example insert. don't uncomment it though because it'll throw an error because the database will complain about non-unique IDs.
 
 		db.getAllAthletes().forEach(a -> System.out.printf("name: %s\nyear of graduation: %s\nschool: %s\n\n",
 								   a.getFullName(),

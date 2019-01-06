@@ -1,10 +1,16 @@
+package capstone.scorebook.data.datatype;
+
+import capstone.scorebook.data.Database;
+import capstone.scorebook.data.StorableStruct;
+import capstone.scorebook.Util;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
 public abstract class Storable {
 
-	private StorableStruct struct; // useful information used with Database like what table this thing goes in
+	private StorableStruct struct; // useful information used with capstone.scorebook.data.Database like what table this thing goes in
 	private HashMap<String, Object> values; // I think this is better than actual variables
 
 	public Storable(StorableStruct struct) { this.struct = struct; }

@@ -1,3 +1,10 @@
+package capstone.scorebook.data.datatype;
+
+import capstone.scorebook.data.StorableStruct;
+import capstone.scorebook.data.Database;
+import capstone.scorebook.data.concrete.Athlete;
+import capstone.scorebook.data.concrete.Meet;
+
 import java.sql.ResultSet;
 
 public abstract class Score extends Storable { // a score belonging to a meet and an athlete

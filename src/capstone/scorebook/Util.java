@@ -1,3 +1,5 @@
+package capstone.scorebook;
+
 public class Util {
 
 	private static char QUOTE = '\''; // might be better to use ``?

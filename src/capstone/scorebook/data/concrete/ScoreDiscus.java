@@ -1,3 +1,8 @@
+package capstone.scorebook.data.concrete;
+
+import capstone.scorebook.data.datatype.Score;
+import capstone.scorebook.data.StorableStruct;
+
 import java.sql.ResultSet;
 
 public class ScoreDiscus extends Score { // TODO: one day it would be nice to have consistent naming

@@ -1,3 +1,9 @@
+package capstone.scorebook.data.concrete;
+
+import capstone.scorebook.data.StorableStruct;
+import capstone.scorebook.Util;
+import capstone.scorebook.data.datatype.IDStorable;
+
 import java.sql.ResultSet;
 
 public class Athlete extends IDStorable {

@@ -1,3 +1,9 @@
+package capstone.scorebook.data.datatype;
+
+import capstone.scorebook.data.concrete.Address;
+import capstone.scorebook.data.Database;
+import capstone.scorebook.data.StorableStruct;
+
 import java.sql.ResultSet;
 
 public abstract class Location extends IDStorable { // something that has an address

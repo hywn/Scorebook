@@ -1,3 +1,8 @@
+package capstone.scorebook.data.concrete;
+
+import capstone.scorebook.data.StorableStruct;
+import capstone.scorebook.data.datatype.Location;
+
 import java.sql.ResultSet;
 
 public class Meet extends Location {
@@ -5,7 +10,7 @@ public class Meet extends Location {
 	public static final StorableStruct STRUCT =
 		new StorableStruct("meet", rs -> new Meet(rs));
 
-	private static final String // remember that meet ID itself is handled by IDStorable and address ID is handled by Location
+	private static final String // remember that meet ID itself is handled by capstone.scorebook.data.datatype.IDStorable and address ID is handled by capstone.scorebook.data.datatype.Location
 		COLUMN_DATE = "date",
 		COLUMN_SEASON = "season",
 		COLUMN_INDOOR = "indoor", // note: this is an integer; 0 is false, 1 is true

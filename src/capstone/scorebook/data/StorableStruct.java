@@ -1,8 +1,12 @@
+package capstone.scorebook.data;
+
+import capstone.scorebook.data.datatype.Storable;
+
 import java.sql.ResultSet;
 
 public class StorableStruct {
 
-	interface StorableResultSetFactory {
+	public interface StorableResultSetFactory {
 		public Storable produce(ResultSet rs);
 	}
 

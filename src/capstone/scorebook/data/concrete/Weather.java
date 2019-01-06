@@ -1,3 +1,8 @@
+package capstone.scorebook.data.concrete;
+
+import capstone.scorebook.data.StorableStruct;
+import capstone.scorebook.data.datatype.Storable;
+
 import java.sql.ResultSet;
 
 public class Weather extends Storable { // TODO: what are the types going to be?
