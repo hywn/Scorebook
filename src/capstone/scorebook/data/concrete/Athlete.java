@@ -8,13 +8,14 @@ import java.sql.ResultSet;
 
 public class Athlete extends IDStorable {
 
-	public static final StorableStruct STRUCT =
-		new StorableStruct("athlete", rs -> new Athlete(rs));
 
 	private static final String // the goal is to keep all of the database implementation private
 		COLUMN_SCHOOL_ID = "sid",
 		COLUMN_YEAR_OF_GRADUATION = "yog",
 		COLUMN_NAME = "name";
+
+	public static final StorableStruct STRUCT =
+		new StorableStruct("athlete", Athlete::new);
 
 	public Athlete(ResultSet rs) { super(STRUCT, rs); } // unsightly
 

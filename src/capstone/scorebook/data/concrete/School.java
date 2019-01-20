@@ -8,14 +8,14 @@ import java.sql.ResultSet;
 
 public class School extends Location {
 
-	public static final StorableStruct STRUCT =
-		new StorableStruct("school", rs -> new School(rs));
-
 	private static final String
 		COLUMN_NAME = "name",
 		COLUMN_DISTRICT = "district",
 		COLUMN_REGION = "region",
 		COLUMN_DIVISION = "division";
+
+	public static final StorableStruct STRUCT =
+		new StorableStruct("school", School::new);
 
 	public School(ResultSet rs) { super(STRUCT, rs); }
 

@@ -8,14 +8,14 @@ import java.sql.ResultSet;
 
 public class Address extends IDStorable {
 
-	public static final StorableStruct STRUCT =
-		new StorableStruct("address", rs -> new Address(rs)); // I wish Java had something akin to static abstract
-
 	private static final String
 		COLUMN_STREET_ADDRESS = "saddress", // column names
 		COLUMN_CITY = "city",
 		COLUMN_STATE_CODE = "state",
 		COLUMN_ZIP_CODE = "zip";
+
+	public static final StorableStruct STRUCT =
+		new StorableStruct("address", Address::new); // I wish Java had something akin to static abstract
 
 	public Address(ResultSet rs) { super(STRUCT, rs); }
 

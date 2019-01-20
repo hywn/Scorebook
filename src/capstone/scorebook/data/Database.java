@@ -1,26 +1,20 @@
 package capstone.scorebook.data;
 
-import capstone.scorebook.data.datatype.IDStorable;
-import capstone.scorebook.data.datatype.Storable;
-import capstone.scorebook.data.concrete.Address;
-import capstone.scorebook.data.concrete.Athlete;
-import capstone.scorebook.data.concrete.Meet;
-import capstone.scorebook.data.concrete.School;
-
 import java.sql.*;
 import java.util.ArrayList;
+import java.nio.file.Path;
 
-public class Database {
+public abstract class Database {
 
-	private Connection connection;
+	private Connection connection; // could probably be final
 
-	public Database(String path) throws SQLException {
+	public Database(Path path) throws SQLException {
 
-		connection = DriverManager.getConnection("jdbc:sqlite:" + path);
+		connection = DriverManager.getConnection("jdbc:sqlite:" + path.toString());
 
 	}
 
-	public void execute(String... sqls) {
+	protected void execute(String... sqls) {
 
 		for (String sql : sqls) System.out.println(sql); // for debugging; remove when not debugging
 
@@ -38,9 +32,9 @@ public class Database {
 
 	}
 
-	public <T extends Storable> ArrayList<T> query(StorableStruct struct, String sql) {
+	protected <T extends Storable> ArrayList<T> query(StorableStruct struct, String sql) {
 
-		System.out.println(sql); // for debugging; remove when not debugging
+		//System.out.println (sql); // for debugging; remove when not debugging
 
 		ArrayList<T> list = new ArrayList();
 
@@ -62,19 +56,22 @@ public class Database {
 
 	}
 
+	protected <T extends Storable> T querySingle(StorableStruct struct, String sql) {
+
+		ArrayList<T> list = query(struct, sql);
+
+		if (list.size() == 1) return list.get(0);
+		if (list.size() == 0) return null;
+
+		System.err.println("Duplicate results for single query: " + sql);
+		return null;
+
+	}
+
+	public void delete(Storable storable) { execute(storable.toDeleteStatement()); }
+	public void insert(Storable storable) { execute(storable.toInsertStatement()); }
+
 	// select all records methods
-	private <T extends Storable> ArrayList<T> querySelectAll(StorableStruct struct) { return query(struct, "select * from " + struct.TABLE); }
-	public ArrayList<Address> getAllAddresses() { return querySelectAll(Address.STRUCT); }
-	public ArrayList<Athlete> getAllAthletes() { return querySelectAll(Athlete.STRUCT); }
-	public ArrayList<Meet> getAllMeets() { return querySelectAll(Meet.STRUCT); }
-	public ArrayList<School> getAllSchools() { return querySelectAll(School.STRUCT); }
-
-	// scores and weather should always be selected by meet/student
-
-	// query by ID methods
-	public Address getAddress(String aid) { return IDStorable.querySelectByID(this, Address.STRUCT, aid); }
-	public Athlete getAthlete(String tid) { return IDStorable.querySelectByID(this, Athlete.STRUCT, tid); }
-	public Meet getMeet(String mid) { return IDStorable.querySelectByID(this, Meet.STRUCT, mid); }
-	public School getSchool(String sid) { return IDStorable.querySelectByID(this, School.STRUCT, sid); }
+	protected <T extends Storable> ArrayList<T> querySelectAll(StorableStruct struct) { return query(struct, "select * from " + struct.TABLE); }
 
 }

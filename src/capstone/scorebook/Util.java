@@ -1,24 +1,36 @@
 package capstone.scorebook;
 
+import java.util.Collection;
+import java.util.StringJoiner;
+
 public class Util {
 
 	private static char QUOTE = '\''; // might be better to use ``?
 
-	public static void appendCleanEquals(StringBuilder b, String key, Object o) { b.append(key); b.append('='); appendClean(b, o); }
+	public interface ItemConstructor<E> {
+		String construct(E e);
+	}
 
-	public static void appendClean(StringBuilder b, Object o) { // TODO: appendEqualsClean?
+	public static <E> String formList(String delim, ItemConstructor<E> constructor, Collection<E> collection) {
 
-		if (o instanceof String) {
+		StringJoiner j = new StringJoiner(delim);
 
-			b.append(QUOTE);
-			b.append(o); // TODO: sanitize strings
-			b.append(QUOTE);
+		for (E e : collection) {
 
-		} else {
+			String item = constructor.construct(e);
 
-			b.append(o);
+			if (item != null) j.add(item);
 
 		}
+
+		return j.toString();
+
+	}
+
+	public static String getFormatted(Object o) {
+
+		if (o instanceof String) return QUOTE + ((String) o).replaceAll("'", "''") + QUOTE;
+		else return o.toString();
 
 	}
 

@@ -1,7 +1,5 @@
 package capstone.scorebook.data.datatype;
 
-import capstone.scorebook.data.concrete.Address;
-import capstone.scorebook.data.Database;
 import capstone.scorebook.data.StorableStruct;
 
 import java.sql.ResultSet;
@@ -19,7 +17,5 @@ public abstract class Location extends IDStorable { // something that has an add
 	}
 
 	public String getAddressID() { return getValue(COLUMN_ADDRESS_ID); }
-
-	public Address getAddress(Database db) { return db.getAddress(getAddressID()); }
 
 }

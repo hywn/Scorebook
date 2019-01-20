@@ -1,21 +1,21 @@
 package capstone.scorebook.data.concrete;
 
+import capstone.scorebook.data.Storable;
 import capstone.scorebook.data.StorableStruct;
-import capstone.scorebook.data.datatype.Storable;
 
 import java.sql.ResultSet;
 
 public class Weather extends Storable { // TODO: what are the types going to be?
 
-	public static final StorableStruct STRUCT =
-		new StorableStruct("weather", rs -> new Weather(rs));
-
-	public Weather(ResultSet rs) { super(STRUCT, rs); }
-
 	private static final String
 		COLUMN_MEET_ID = "mid",
 		COLUMN_TYPE = "type",
 		COLUMN_DESCRIPTION = "description";
+
+	public static final StorableStruct STRUCT =
+		new StorableStruct("weather", Weather::new);
+
+	public Weather(ResultSet rs) { super(STRUCT, rs); }
 
 	public Weather(String meetID, String type, String description) { // TODO: public verification
 

@@ -1,5 +1,6 @@
 package capstone.scorebook.data.datatype;
 
+import capstone.scorebook.data.Storable;
 import capstone.scorebook.data.StorableStruct;
 import capstone.scorebook.data.Database;
 import capstone.scorebook.data.concrete.Athlete;
@@ -25,8 +26,5 @@ public abstract class Score extends Storable { // a score belonging to a meet an
 
 	public String getMeetID() { return getValue(COLUMN_MEET_ID); }
 	public String getAthleteID() { return getValue(COLUMN_ATHLETE_ID); }
-
-	public Meet getMeet(Database db) { return db.getMeet(getMeetID()); }
-	public Athlete getAthlete(Database db) { return db.getAthlete(getAthleteID()); }
 
 }
