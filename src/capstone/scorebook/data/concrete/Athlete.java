@@ -17,7 +17,7 @@ public class Athlete extends IDStorable {
 	public static final StorableStruct STRUCT =
 		new StorableStruct("athlete", Athlete::new);
 
-	public Athlete(ResultSet rs) { super(STRUCT, rs); } // unsightly
+	private Athlete(ResultSet rs) { super(STRUCT, rs); } // unsightly
 
 	public Athlete(String schoolID, int yearOfGraduation, String fullName) { // TODO: make private and add static constructor that verifies data
 

@@ -17,7 +17,7 @@ public class School extends Location {
 	public static final StorableStruct STRUCT =
 		new StorableStruct("school", School::new);
 
-	public School(ResultSet rs) { super(STRUCT, rs); }
+	private School(ResultSet rs) { super(STRUCT, rs); }
 
 	public School(String addressID, String name, String district, String region, String division) { // TODO: verification
 

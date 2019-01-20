@@ -55,6 +55,13 @@ public class Util {
 
 	}
 
+	// TODO: maybe multiple-condition check isn't good, promotes generic error messages
+	public static void check(String errorMessage, boolean... conditions) throws IllegalArgumentException {
+
+		for (boolean condition : conditions) if (!condition) throw new IllegalArgumentException(errorMessage);
+
+	}
+
 	// converts int to boolean
 	public static boolean toBoolean(int integer) { return integer == 1; }
 

@@ -15,7 +15,7 @@ public class Weather extends Storable { // TODO: what are the types going to be?
 	public static final StorableStruct STRUCT =
 		new StorableStruct("weather", Weather::new);
 
-	public Weather(ResultSet rs) { super(STRUCT, rs); }
+	private Weather(ResultSet rs) { super(STRUCT, rs); }
 
 	public Weather(String meetID, String type, String description) { // TODO: public verification
 

@@ -14,7 +14,7 @@ public class ScoreDiscus extends Score { // TODO: one day it would be nice to ha
 	public static final StorableStruct STRUCT =
 		new StorableStruct("score_discus", ScoreDiscus::new);
 
-	public ScoreDiscus(ResultSet rs) { super(STRUCT, rs); }
+	private ScoreDiscus(ResultSet rs) { super(STRUCT, rs); }
 
 	public ScoreDiscus(String meetID, String athleteID, int order, int distance) { // might need to change to double distance later, but that's OK
 
