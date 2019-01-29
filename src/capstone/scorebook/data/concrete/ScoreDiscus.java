@@ -7,14 +7,14 @@ import java.sql.ResultSet;
 
 public class ScoreDiscus extends Score { // TODO: one day it would be nice to have consistent naming
 
-	public static final StorableStruct STRUCT =
-		new StorableStruct("score_discus", rs -> new ScoreDiscus(rs));
-
-	public final static String
+	private final static String
 		COLUMN_ORDER = "ord", // "order" is a keyword and sql and needs to be escaped; just avoid it altogether
 		COLUMN_DISTANCE = "distance";
 
-	public ScoreDiscus(ResultSet rs) { super(STRUCT, rs); }
+	public static final StorableStruct STRUCT =
+		new StorableStruct("score_discus", ScoreDiscus::new);
+
+	private ScoreDiscus(ResultSet rs) { super(STRUCT, rs); }
 
 	public ScoreDiscus(String meetID, String athleteID, int order, int distance) { // might need to change to double distance later, but that's OK
 

@@ -1,6 +1,7 @@
 package capstone.scorebook.data.datatype;
 
 import capstone.scorebook.data.Database;
+import capstone.scorebook.data.Storable;
 import capstone.scorebook.data.StorableStruct;
 import capstone.scorebook.Util;
 
@@ -18,7 +19,7 @@ public abstract class IDStorable extends Storable {
 
 		super(struct, values, append);
 
-		register(COLUMN_ID, generateID()); // must register after constructor because requires all possible info/values to be registered
+		addValue(COLUMN_ID, generateID()); // must register after constructor because requires all possible info/values to be registered
 
 	}
 
@@ -26,7 +27,7 @@ public abstract class IDStorable extends Storable {
 
 		super(struct, values);
 
-		register(COLUMN_ID, generateID()); // must register after constructor because requires all possible info/values to be registered
+		addValue(COLUMN_ID, generateID()); // must register after constructor because requires all possible info/values to be registered
 
 	}
 
@@ -34,46 +35,24 @@ public abstract class IDStorable extends Storable {
 
 	public String getID() { return getValue(COLUMN_ID); }
 
-	// update this thing in the database
-	public void update(Database db) {
-
-		HashMap<String, Object> values = getRawValues();
+	public String toUpdateStatement() { // would ideally be package-private with ScorebookDatabase
 
 		// update ___ set ___=___, ___=___ ... where ___=___;
 
-
-		StringBuilder b = new StringBuilder("update "); b.append(getStruct().TABLE); b.append(" set "); // update ___ set
-
-		String separator = "";
-
-		for (String key : values.keySet()) {
-
-			b.append(separator);
-
-			Util.appendCleanEquals(b, key, values.get(key)); // ___=___
-
-			separator = ", ";
-
-		}
-
-		b.append(" where "); Util.appendCleanEquals(b, COLUMN_ID, getID()); // where ___=___
-
-		db.execute(b.toString());
+		return String.format("update %s set %s where %s",
+				     getStruct().TABLE,
+				     toCVMapIncludeAll(", "),
+				     toCVPair(COLUMN_ID));
 
 	}
 
-	// TODO: make capstone.scorebook.Util methods for repeated stuff like where clauses
+	public static String toQuerySelectByID(StorableStruct struct, String id) {
 
-	public static <T extends IDStorable> T querySelectByID(Database db, StorableStruct struct, String id) { // select * from ___ where ___=___
+		// select * from ___ where ___=___
 
-		StringBuilder query = new StringBuilder("select * from "); query.append(struct.TABLE); query.append(" where "); // select * from ___ where
-		Util.appendCleanEquals(query, COLUMN_ID, id); // ___=___
-
-		ArrayList<T> results = db.query(struct, query.toString());
-
-		if (results.size() == 0) return null;
-
-		return results.get(0); // this should always work; there will always be either 0 or 1 matching entries assuming the database is properly set up because PRIMARY KEY will always enforce UNIQUE
+		return String.format("select * from %s where %s=%s",
+				     struct.TABLE,
+				     toCVPair(COLUMN_ID, id));
 
 	}
 

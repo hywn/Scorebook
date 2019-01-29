@@ -7,18 +7,18 @@ import java.sql.ResultSet;
 
 public class Meet extends Location {
 
-	public static final StorableStruct STRUCT =
-		new StorableStruct("meet", rs -> new Meet(rs));
-
-	private static final String // remember that meet ID itself is handled by capstone.scorebook.data.datatype.IDStorable and address ID is handled by capstone.scorebook.data.datatype.Location
+	private static final String // remember that meet ID itself is handled by IDStorable and address ID is handled by Location
 		COLUMN_DATE = "date",
 		COLUMN_SEASON = "season",
 		COLUMN_INDOOR = "indoor", // note: this is an integer; 0 is false, 1 is true
 		COLUMN_FAHRENHEIT_AVG = "tempAvg";
 
-	public Meet(ResultSet rs) { super(STRUCT, rs); }
+	public static final StorableStruct STRUCT =
+		new StorableStruct("meet", Meet::new); // I wish Java had something akin to static abstract
 
-	public Meet(String addressID, String date, String season, int isIndoor, int tempFahrenheitAvg) { // TODO: make private and make static creation methods with data verification
+	private Meet(ResultSet rs) { super(STRUCT, rs); }
+
+	public Meet(String addressID, String date, String season, int isIndoor, int tempFahrenheitAvg) {
 
 		super(STRUCT, addressID,
 		      COLUMN_DATE, date,

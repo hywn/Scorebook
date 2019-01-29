@@ -1,7 +1,5 @@
 package capstone.scorebook.data;
 
-import capstone.scorebook.data.datatype.Storable;
-
 import java.sql.ResultSet;
 
 public class StorableStruct {
