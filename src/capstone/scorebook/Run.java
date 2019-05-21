@@ -10,7 +10,7 @@ public class Run {
 
 	public static void main(String[] args) {
 
-		ScorebookDatabase db; // Jimmy likes dogs.
+		ScorebookDatabase db; // Tommy likes cats.
 
 		try { db = new ScorebookDatabase(Paths.get("test.db")); }
 
