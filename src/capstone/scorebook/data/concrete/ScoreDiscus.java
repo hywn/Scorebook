@@ -16,9 +16,9 @@ public class ScoreDiscus extends Score { // TODO: one day it would be nice to ha
 
 	private ScoreDiscus(ResultSet rs) { super(STRUCT, rs); }
 
-	public ScoreDiscus(String meetID, String athleteID, int order, int distance) { // might need to change to double distance later, but that's OK
+	public ScoreDiscus(String meetID, String athleteID, String weatherID, int order, int distance) { // might need to change to double distance later, but that's OK
 
-		super(STRUCT, meetID, athleteID,
+		super(STRUCT, meetID, athleteID, weatherID,
 		      COLUMN_ORDER, order,
 		      COLUMN_DISTANCE, distance);
 
