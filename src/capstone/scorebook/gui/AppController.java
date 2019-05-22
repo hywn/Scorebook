@@ -17,22 +17,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class AppController {
-	//from previous page
-	private String meetID, meetType;	//previous page will say 0 for little meet
-	
 	@FXML
 	private Button registerButton, enterButton;
 	@FXML
-	private TextField nameField, throwField, weatherField, windField, eventField, distanceField, meetField;
+	private TextField nameField, throwField, weatherField, windField, eventField, distanceField, roundField, meetField;
 	@FXML
-	private ComboBox nameDrop, throwDrop, weatherDrop, windDrop, eventDrop;
+	private ComboBox nameDrop, throwDrop, weatherDrop, windDrop, eventDrop, roundDrop, meetDrop;
 	@FXML
+
 	private Label meetLabel;
 	
 	private TextField[] fields = {	// contains all the TextField objects
 		nameField, throwField, weatherField, windField, eventField, distanceField, meetField
 	};
-	
 	private ScorebookDatabase db;
 
 	public void dataBase() {
@@ -57,6 +54,10 @@ public class AppController {
 		windDrop = new ComboBox(windOptions);
 		ObservableList<String> eventOptions = FXCollections.observableArrayList("Discus", "Shotput");
 		eventDrop = new ComboBox(eventOptions);
+		ObservableList<String> roundOptions = FXCollections.observableArrayList("1", "2");
+		roundDrop = new ComboBox(roundOptions);
+		ObservableList<String> meetOptions = FXCollections.observableArrayList("1", "2");
+		meetDrop = new ComboBox(meetOptions);
 	}
 
 	public void autoComplete() {
@@ -79,48 +80,56 @@ public class AppController {
 	public String getPerson() {
 		return nameField.getText();
 	}
-	
+
 	public String getAthleteID() {
-		//go through hashmap of athletes? and get the id of the athlete
-		return "a;sdlfkj";
+		List<Athlete> athletes = db.getAllAthletes();
+
+		for (Athlete a : athletes)
+			if (a.getFullName().equals(getPerson()))
+				return a.getID();
+
+		return null;
 	}
-	
+
 	public int getThrow() {
 		return Integer.parseInt(throwField.getText());
 	}
-	
+
 	public String getWeather() {
 		return weatherField.getText();
 	}
-	
+
 	public String getWind() {
 		return windField.getText();
 	}
-	
+
 	public String getEvent() {
 		return eventField.getText();
 	}
-	
+
 	public int getDistance() {
 		return Integer.parseInt(distanceField.getText());
+	}
+
+	public int getRound() {
+		return Integer.parseInt(roundField.getText());
 	}
 	
 	public String getMeetID() {
 		return meetField.getText();
 	}
-	
+  
 	public void enter() {
-		if(eventField.getText().equals("Discus")) {
-			db.insert(new ScoreDiscus(meetID, getAthleteID(), getWeather(), getThrow(), getDistance()));
-		}
-		else if(eventField.getText().equals("Shotput")) {
-			db.insert(new ScoreDiscus(meetID, getAthleteID(), getWeather(), getThrow(), getDistance()));
+		if (eventField.getText().equals("Discus")) {
+			db.insert(new ScoreDiscus(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
+		} else if (eventField.getText().equals("Shotput")) {
+			db.insert(new ScoreDiscus(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
 		}
 		for(TextField tf : fields) {
 			tf.clear();
 		}
 	}
-	
+
 	public void exit() {
 		System.exit(0);
 	}

@@ -20,7 +20,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getClassLoader().getResource("AppLayout.fxml"));
-			Scene scene = new Scene(root,600, 600);
+			Scene scene = new Scene(root, 600, 600);
 			scene.setFill(Color.TRANSPARENT);
 			root.setBackground(Background.EMPTY);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
