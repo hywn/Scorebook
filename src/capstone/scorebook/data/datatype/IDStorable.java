@@ -50,7 +50,7 @@ public abstract class IDStorable extends Storable {
 
 		// select * from ___ where ___=___
 
-		return String.format("select * from %s where %s=%s",
+		return String.format("select * from %s where %s",
 				     struct.TABLE,
 				     toCVPair(COLUMN_ID, id));
 
