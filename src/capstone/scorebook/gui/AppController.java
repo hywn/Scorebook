@@ -5,25 +5,31 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import capstone.scorebook.data.concrete.*;
+import capstone.scorebook.data.concrete.Athlete;
+import capstone.scorebook.data.concrete.ScoreDiscus;
 import capstone.scorebook.data.concrete.ScorebookDatabase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class AppController {
 	@FXML
-	private Button registerButton;
+	private Button registerButton, enterButton;
 	@FXML
 	private TextField nameField, throwField, weatherField, windField, eventField, distanceField, roundField, meetField;
 	@FXML
 	private ComboBox nameDrop, throwDrop, weatherDrop, windDrop, eventDrop, roundDrop, meetDrop;
 	@FXML
-	private Button enterButton;
 
+	private Label meetLabel;
+	
+	private TextField[] fields = {	// contains all the TextField objects
+		nameField, throwField, weatherField, windField, eventField, distanceField, meetField
+	};
 	private ScorebookDatabase db;
 
 	public void dataBase() {
@@ -112,12 +118,15 @@ public class AppController {
 	public String getMeetID() {
 		return meetField.getText();
 	}
-
+  
 	public void enter() {
 		if (eventField.getText().equals("Discus")) {
 			db.insert(new ScoreDiscus(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
 		} else if (eventField.getText().equals("Shotput")) {
 			db.insert(new ScoreDiscus(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
+		}
+		for(TextField tf : fields) {
+			tf.clear();
 		}
 	}
 
