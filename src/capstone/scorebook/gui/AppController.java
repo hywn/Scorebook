@@ -1,4 +1,4 @@
-package application;
+package capstone.scorebook.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
