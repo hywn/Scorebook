@@ -1,5 +1,4 @@
-package application;
-	
+package capstone.scorebook.gui;
 
 
 import javafx.application.Application;
