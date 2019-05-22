@@ -7,17 +7,45 @@
 
 <AnchorPane prefHeight="463.0" prefWidth="393.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="-29.0" layoutY="-32.0" prefHeight="609.0" prefWidth="606.0" style="-fx-background-color: transparen;">
+      <AnchorPane layoutX="-29.0" layoutY="-32.0" prefHeight="609.0" prefWidth="606.0">
          <children>
             <AnchorPane layoutX="28.0" layoutY="156.0" prefHeight="453.0" prefWidth="582.0" style="-fx-background-color: #191970; -fx-background-radius: 15;">
                <children>
-                  <Button layoutX="14.0" layoutY="29.0" mnemonicParsing="false" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Register a new Athlete" textFill="WHITE">
+                  <Button fx:id="registerAthleteButton" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Register a new Athlete" textFill="WHITE">
                      <font>
-                        <Font name="Arial Bold" size="13.0" />
+                        <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button layoutX="14.0" layoutY="113.0" mnemonicParsing="false" style="-fx-background-radius: 15;" text="INPUT DATA FOR ATHLETES" />
-                  <Button layoutX="39.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-radius: 15;" text="VIEW DATA" />
+                  <Button fx:id="inputDataButton" layoutX="296.0" layoutY="32.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Input data for an Athlete" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="registerMeetButton" layoutX="14.0" layoutY="142.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Register a new Meet" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="dataButton" layoutX="296.0" layoutY="142.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="View past data" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="optionsButton" layoutX="14.0" layoutY="246.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Options" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="aboutButton" layoutX="296.0" layoutY="246.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="About" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="exitButton" layoutX="160.0" layoutY="347.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Exit" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="29.0" layoutY="31.0" prefHeight="97.0" prefWidth="582.0" style="-fx-background-color: GREEN; -fx-background-radius: 10;">
