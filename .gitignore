@@ -1,5 +1,7 @@
 /.idea/**
 /bin/**
+/Scorebook.iml
 /.classpath
 /.project
 /bin/
+**/.DS_Store
