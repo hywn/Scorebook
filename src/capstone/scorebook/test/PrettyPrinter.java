@@ -4,8 +4,8 @@ import capstone.scorebook.data.concrete.Athlete;
 import capstone.scorebook.data.concrete.Meet;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -20,9 +20,14 @@ public class PrettyPrinter {
 		.add("Address", Meet::getAddressID)
 		.add("Season", Meet::getSeason);
 
-	private static <E> int max(List<E> items, String header, Function<E, String> strFunct) {
+	private static <E> HashMap<String, Integer> widths(List<E> items, TableFormat<E> format) {
 
-		return 5 + Collections.max(Stream.concat(items.stream().map(strFunct), Stream.of(header)).map(String::length).collect(Collectors.toList()));
+		HashMap<String, Integer> widths = new HashMap();
+
+		for (String colName : format.table.keySet())
+			widths.put(colName, Collections.max(Stream.concat(Stream.of(colName), items.stream().map(format.table.get(colName))).map(String::length).collect(Collectors.toList())));
+
+		return widths;
 
 	}
 
@@ -41,9 +46,16 @@ public class PrettyPrinter {
 
 	}
 
-	public static <E> String toTable(List<E> items, TableFormat<E> format) {
+	public static <E> String toTable(List<E> items, TableFormat<E> format, int padding) {
 
-		return null;
+		HashMap<String, Integer> widths = widths(items, format);
+
+		StringBuilder b = new StringBuilder();
+
+		for (E item : items)
+			b.append(String.join(" ".repeat(padding), format.table.keySet().stream().map(colName -> String.format("%" + widths.get(colName) + "s", format.table.get(colName).apply(item))).collect(Collectors.toList())) + "\n");
+
+		return b.toString();
 
 	}
 
