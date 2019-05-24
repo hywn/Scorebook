@@ -22,6 +22,48 @@ public class PrettyPrinter {
 		.add("Address", Meet::getAddressID)
 		.add("Season", Meet::getSeason);
 
+	public static <E> String toCSV(List<E> items, TableFormat<E> format) {
+
+		return toTable(items, format.table.keySet(), ",",
+			       colName -> colName,
+			       (colName, item) -> format.table.get(colName).apply(item));
+
+	}
+
+	public static <E> String toTable(List<E> items, TableFormat<E> format, int padding) {
+
+		HashMap<String, Integer> widths = widths(items, format);
+
+		return toTable(items, format.table.keySet(), "",
+			       colName -> padded(colName, widths.get(colName) + padding),
+			       (colName, item) -> padded(format.table.get(colName).apply(item), widths.get(colName) + padding));
+
+	}
+
+	interface TwoFunction<X, Y, Out> { // function with two inputs
+		Out apply(X x, Y y);
+	}
+
+	public static <E> String toTable(List<E> items, Collection<String> colNames, String delim, Function<String, String> colNameFunc, TwoFunction<String, E, String> rowDataFunc) {
+
+		StringBuilder b = new StringBuilder();
+
+		b.append(String.join(delim, colNames.stream().map(colNameFunc).collect(Collectors.toList()))); // col names
+		b.append('\n');
+
+		for (E item : items) {
+
+			b.append(String.join(delim, colNames.stream().map(colName -> rowDataFunc.apply(colName, item)).collect(Collectors.toList()))); // table data
+			b.append('\n');
+
+		}
+
+		return b.toString();
+
+	}
+
+	private static String padded(String str, int padding) { return String.format("%" + padding + "s", str); }
+
 	private static <E> HashMap<String, Integer> widths(List<E> items, TableFormat<E> format) {
 
 		HashMap<String, Integer> widths = new HashMap();
@@ -32,44 +74,5 @@ public class PrettyPrinter {
 		return widths;
 
 	}
-
-	public static <E> String toCSV(List<E> items, TableFormat<E> format) {
-
-		StringBuilder b = new StringBuilder();
-
-		appendRow(b, ",", format.table.keySet(), colName -> colName);
-
-		for (E item : items)
-			appendRow(b, ",", format.table.keySet(), colName -> format.table.get(colName).apply(item));
-
-
-		return b.toString();
-
-	}
-
-	public static <E> String toTable(List<E> items, TableFormat<E> format, int padding) {
-
-		HashMap<String, Integer> widths = widths(items, format);
-
-		StringBuilder b = new StringBuilder();
-
-		appendRow(b, format.table.keySet(), colName -> padded(colName, widths.get(colName) + padding));
-
-		for (E item : items)
-			appendRow(b, format.table.keySet(), colName -> padded(format.table.get(colName).apply(item), widths.get(colName) + padding));
-
-		return b.toString();
-
-	}
-
-	public static void appendRow(StringBuilder b, Collection<String> colNames, Function<String, String> colNameToRowData) { appendRow(b, "", colNames, colNameToRowData); }
-	public static void appendRow(StringBuilder b, String delim, Collection<String> colNames, Function<String, String> colNameToRowData) {
-
-		b.append(String.join(delim, colNames.stream().map(colNameToRowData).collect(Collectors.toList())));
-		b.append('\n');
-
-	}
-
-	private static String padded(String str, int padding) { return String.format("%" + padding + "s", str); }
 
 }
