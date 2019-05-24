@@ -14,19 +14,27 @@ public class MainPageController extends SomeStuffController {
 	}
 
 	public void registerMeet() {
-		// do these you lazy idiot
-	}
-
-	public void inputData() {
-
+		openFXML("RegisterMeet.fxml");
 	}
 
 	public void registerAthlete() {
 		openFXML("RegisterAthlete.fxml");
 	}
 
-	public void about() {
+	public void aboutPage() {
 		openFXML("About.fxml");
+	}
+
+	public void inputData() {
+		openFXML("ThrowData.fxml");
+	}
+	
+	public void optionsPage() {
+		
+	}
+	
+	public void viewData() {
+		
 	}
 
 }

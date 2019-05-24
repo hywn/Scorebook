@@ -18,7 +18,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getClassLoader().getResource("windowgui/About.fxml"));
+			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getClassLoader().getResource("windowgui/MainPage.fxml"));
 			Scene scene = new Scene(root, 600, 600);
 			scene.setFill(Color.TRANSPARENT);
 			root.setBackground(Background.EMPTY);
