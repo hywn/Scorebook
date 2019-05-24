@@ -1,6 +1,5 @@
 package capstone.scorebook.gui;
 
-
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
