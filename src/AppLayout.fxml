@@ -44,17 +44,17 @@
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="optionsButton" layoutX="14.0" layoutY="246.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Options" textFill="WHITE">
+                  <Button fx:id="optionsButton" layoutX="14.0" layoutY="252.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Options" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="aboutButton" layoutX="296.0" layoutY="246.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="About" textFill="WHITE">
+                  <Button fx:id="aboutButton" layoutX="296.0" layoutY="252.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="About" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="exitButton" layoutX="160.0" layoutY="347.0" mnemonicParsing="false" onAction="#exit" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Exit" textFill="WHITE">
+                  <Button fx:id="exitButton" layoutX="155.0" layoutY="362.0" mnemonicParsing="false" onAction="#exit" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Exit" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
