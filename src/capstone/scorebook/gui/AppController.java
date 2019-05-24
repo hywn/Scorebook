@@ -25,12 +25,16 @@ public class AppController {
 	@FXML
 	private Button registerButton, enterButton;
 	@FXML
-	private TextField nameField, throwField, weatherField, windField, eventField, distanceField, roundField, meetField;
+	private TextField nameField, throwField, weatherField, windField, eventField, distanceFeetField, distanceInchesField, roundField, meetField;
 	@FXML
 	private ComboBox nameDrop, throwDrop, weatherDrop, windDrop, eventDrop, roundDrop, meetDrop;
 	@FXML
 	private Label meetLabel;
 	
+	private TextField[] fieldsClear = {	// contains all the TextField objects
+		nameField, distanceFeetField, distanceInchesField
+	};
+  
 	@FXML
 	private AnchorPane mainMenuPane, AthleteRegistrationPane, aboutPane, inputDataPane, viewDataPane, optionPane;
 	
@@ -112,7 +116,7 @@ public class AppController {
 	}
 
 	public int getDistance() {
-		return Integer.parseInt(distanceField.getText());
+		return Integer.parseInt(distanceFeetField.getText())*12+Integer.parseInt(distanceInchesField.getText());
 	}
 
 	public int getRound() {
@@ -128,6 +132,9 @@ public class AppController {
 			db.insert(new ScoreDiscus(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
 		} else if (eventField.getText().equals("Shotput")) {
 			db.insert(new ScoreShotput(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
+		}
+		for(TextField tf : fieldsClear) {
+			tf.clear();
 		}
 	}
 	
