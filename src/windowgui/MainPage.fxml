@@ -14,12 +14,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="463.0"
-	prefWidth="393.0" style="-fx-background-color: green;"
+<AnchorPane fx:id="rootPane" prefHeight="484.0"
+	prefWidth="577.0" style="-fx-background-color: green;"
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="windowgui.MainPageController">
 	<children>
-		<Button fx:id="registerAthleteButton" layoutX="26.0"
+		<Button fx:id="registerAthleteButton" layoutX="14.0"
 			layoutY="104.0" mnemonicParsing="false" onAction="#registerAthlete"
 			prefHeight="57.0" prefWidth="272.0"
 			style="-fx-background-radius: 15; -fx-background-color: #191970;"
@@ -28,7 +28,7 @@
 				<Font name="Arial Bold" size="15.0" />
 			</font>
 		</Button>
-		<Button fx:id="inputDataButton" layoutX="240.0" layoutY="104.0"
+		<Button fx:id="inputDataButton" layoutX="291.0" layoutY="104.0"
 			mnemonicParsing="false" onAction="#inputData" prefHeight="57.0"
 			prefWidth="272.0"
 			style="-fx-background-radius: 15; -fx-background-color: #191970;"
@@ -46,7 +46,7 @@
 				<Font name="Arial Bold" size="15.0" />
 			</font>
 		</Button>
-		<Button fx:id="dataButton" layoutX="215.0" layoutY="182.0"
+		<Button fx:id="dataButton" layoutX="291.0" layoutY="175.0" onAction="#viewData"
 			mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0"
 			style="-fx-background-radius: 15; -fx-background-color: #191970;"
 			text="View past data" textFill="WHITE">
@@ -54,7 +54,7 @@
 				<Font name="Arial Bold" size="15.0" />
 			</font>
 		</Button>
-		<Button fx:id="optionsButton" layoutX="-10.0" layoutY="262.0"
+		<Button fx:id="optionsButton" layoutX="14.0" layoutY="248.0" onAction="#optionsPage"
 			mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0"
 			style="-fx-background-radius: 15; -fx-background-color: #191970;"
 			text="Options" textFill="WHITE">
@@ -62,7 +62,7 @@
 				<Font name="Arial Bold" size="15.0" />
 			</font>
 		</Button>
-		<Button fx:id="aboutButton" layoutX="240.0" layoutY="262.0"
+		<Button fx:id="aboutButton" layoutX="291.0" layoutY="248.0" onAction="#aboutPage"
 			mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0"
 			style="-fx-background-radius: 15; -fx-background-color: #191970;"
 			text="About" textFill="WHITE">
@@ -70,7 +70,7 @@
 				<Font name="Arial Bold" size="15.0" />
 			</font>
 		</Button>
-		<Button fx:id="exitButton" layoutX="126.0" layoutY="349.0"
+		<Button fx:id="exitButton" layoutX="150.0" layoutY="362.0"
 			mnemonicParsing="false" onAction="#exit" prefHeight="57.0"
 			prefWidth="272.0"
 			style="-fx-background-radius: 15; -fx-background-color: #191970;"
@@ -79,7 +79,7 @@
 				<Font name="Arial Bold" size="15.0" />
 			</font>
 		</Button>
-		<Label layoutX="26.0" layoutY="26.0" text="ATHLETE TRACKER"
+		<Label layoutX="53.0" layoutY="23.0" text="ATHLETE TRACKER"
 			textFill="WHITE">
 			<font>
 				<Font name="Serif Regular" size="50.0" />

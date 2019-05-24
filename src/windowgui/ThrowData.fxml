@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane" prefHeight="463.0" prefWidth="393.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windowgui.AthleteThrowController">
+	<children>
+		<Label layoutX="11.0" layoutY="172.0" prefHeight="25.0" prefWidth="38.0" text="Name: " />
+		<TextField fx:id="nameField" layoutX="62.0" layoutY="172.0" onAction="#autoComplete" />
+		<ComboBox fx:id="autoBox" layoutX="218.0" layoutY="172.0" onAction="#autoComplete" prefWidth="150.0" />
+		<Label layoutX="14.0" layoutY="14.0" text="Weather:" />
+		<ComboBox fx:id="weatherBox" layoutX="70.0" layoutY="10.0" onAction="#weatherOptions" prefHeight="25.0" prefWidth="93.0" promptText="Sunny" />
+		<Label layoutX="181.0" layoutY="14.0" text="Wind Level: " />
+		<ComboBox fx:id="windBox" layoutX="246.0" layoutY="10.0" onAction="#windOptions" prefHeight="25.0" prefWidth="126.0" promptText="None" />
+		<Label layoutX="14.0" layoutY="54.0" text="Event:" />
+		<Label layoutX="226.0" layoutY="54.0" text="Meet #:" />
+		<TextField fx:id="meetField" layoutX="277.0" layoutY="50.0" prefHeight="25.0" prefWidth="65.0" />
+		<Label layoutX="14.0" layoutY="272.0" text="Distance (Feet):" />
+		<Label layoutX="14.0" layoutY="318.0" text="Distance (Inches):" />
+		<TextField fx:id="feetField" layoutX="122.0" layoutY="268.0" />
+		<TextField fx:id="inchField" layoutX="122.0" layoutY="314.0" />
+		<Button fx:id="enterButton" layoutX="271.0" layoutY="394.0" mnemonicParsing="false" onAction="#enter" text="Enter" />
+		<ComboBox fx:id="eventBox" layoutX="70.0" layoutY="59.0" onAction="#eventOptions" prefHeight="25.0" prefWidth="93.0" />
+		<Label layoutX="11.0" layoutY="121.0" text="Thow #:" />
+		<ComboBox fx:id="throwBox" layoutX="70.0" layoutY="117.0" onAction="#throwOptions" prefHeight="25.0" prefWidth="93.0" />
+		<ImageView layoutX="42.0" layoutY="28.0" onMouseClicked="#goHome" pickOnBounds="true" preserveRatio="true">
+			<image>
+				<Image url="@home.png" />
+			</image>
+		</ImageView>
+	</children>
+</AnchorPane>
