@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import capstone.scorebook.data.concrete.Athlete;
 import capstone.scorebook.data.concrete.ScoreDiscus;
+import capstone.scorebook.data.concrete.ScoreShotput;
 import capstone.scorebook.data.concrete.ScorebookDatabase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,15 +29,10 @@ public class AppController {
 	@FXML
 	private ComboBox nameDrop, throwDrop, weatherDrop, windDrop, eventDrop, roundDrop, meetDrop;
 	@FXML
-
 	private Label meetLabel;
 	
-	private TextField[] fields = {	// contains all the TextField objects
-		nameField, throwField, weatherField, windField, eventField, distanceField, meetField
-	};
-	
 	@FXML
-	private AnchorPane mainMenuPane, AthleteRegistrationPane, aboutPane;
+	private AnchorPane mainMenuPane, AthleteRegistrationPane, aboutPane, inputDataPane, viewDataPane, optionPane;
 	
 	private ScorebookDatabase db;
 
@@ -126,15 +122,12 @@ public class AppController {
 	public String getMeetID() {
 		return meetField.getText();
 	}
-  
-	public void enter() {
+	
+	public void enterThrowData() {
 		if (eventField.getText().equals("Discus")) {
 			db.insert(new ScoreDiscus(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
 		} else if (eventField.getText().equals("Shotput")) {
-			db.insert(new ScoreDiscus(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
-		}
-		for(TextField tf : fields) {
-			tf.clear();
+			db.insert(new ScoreShotput(getMeetID(), getAthleteID(), getWeather(), getThrow(), getDistance()));
 		}
 	}
 	
@@ -152,13 +145,38 @@ public class AppController {
 		aboutPane.setVisible(true);
 	}
 	
+	public void openInputData(ActionEvent e) {
+		inputDataPane.setVisible(true);
+	}
+	
+	public void openViewData(ActionEvent e) {
+		viewDataPane.setVisible(true);
+	}
+	
+	public void openOptionPane(ActionEvent e) {
+		optionPane.setVisible(true);
+	}
+	
 	
 	// Home Methods
 	public void goHomeFromAR(MouseEvent e) {
 		AthleteRegistrationPane.setVisible(false);
 	}
+	
 	public void goHomeFromAbout(MouseEvent e) {
 		aboutPane.setVisible(false);
+	}
+	
+	public void goHomeFromInputData(MouseEvent e) {
+		inputDataPane.setVisible(false);
+	}
+	
+	public void goHomeFromViewData(MouseEvent e) {
+		viewDataPane.setVisible(false);
+	}
+	
+	public void goHomeFromOption(MouseEvent e) {
+		optionPane.setVisible(false);
 	}
 
 }
