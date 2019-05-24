@@ -1,6 +1,5 @@
 package capstone.scorebook.test;
 
-import capstone.scorebook.data.concrete.Meet;
 import capstone.scorebook.data.concrete.ScorebookDatabase;
 
 import java.nio.file.Paths;
@@ -23,8 +22,7 @@ public class PrintTest {
 
 		}
 
-		System.out.println(PrettyPrinter.toTable(db.getAllMeets(), new String[]{"Date", "Season"}, Meet::getDate, Meet::getSeason));
-		System.out.println(PrettyPrinter.toTable(db.getAllAthletes(), new String[]{""}));
+		System.out.println(PrettyPrinter.toCSV(db.getAllAthletes(), PrettyPrinter.FORMAT_ATHLETE));
 
 	}
 
