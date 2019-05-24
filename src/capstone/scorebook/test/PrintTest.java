@@ -21,7 +21,7 @@ public class PrintTest {
 			return;
 
 		}
-
+		System.out.println(PrettyPrinter.toCSV(db.getAllAthletes(), PrettyPrinter.FORMAT_ATHLETE));
 		System.out.println(PrettyPrinter.toTable(db.getAllAthletes(), PrettyPrinter.FORMAT_ATHLETE, 5));
 
 	}

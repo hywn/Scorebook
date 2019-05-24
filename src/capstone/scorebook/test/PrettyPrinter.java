@@ -3,9 +3,11 @@ package capstone.scorebook.test;
 import capstone.scorebook.data.concrete.Athlete;
 import capstone.scorebook.data.concrete.Meet;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,12 +37,11 @@ public class PrettyPrinter {
 
 		StringBuilder b = new StringBuilder();
 
-		b.append(String.join(",", format.table.keySet())); b.append('\n');
+		appendRow(b, ",", format.table.keySet(), colName -> colName);
 
-		for (E item : items) {
-			b.append(String.join(",", format.table.values().stream().map(func -> func.apply(item)).collect(Collectors.toList())));
-			b.append('\n');
-		}
+		for (E item : items)
+			appendRow(b, ",", format.table.keySet(), colName -> format.table.get(colName).apply(item));
+
 
 		return b.toString();
 
@@ -52,11 +53,23 @@ public class PrettyPrinter {
 
 		StringBuilder b = new StringBuilder();
 
+		appendRow(b, format.table.keySet(), colName -> padded(colName, widths.get(colName) + padding));
+
 		for (E item : items)
-			b.append(String.join(" ".repeat(padding), format.table.keySet().stream().map(colName -> String.format("%" + widths.get(colName) + "s", format.table.get(colName).apply(item))).collect(Collectors.toList())) + "\n");
+			appendRow(b, format.table.keySet(), colName -> padded(format.table.get(colName).apply(item), widths.get(colName) + padding));
 
 		return b.toString();
 
 	}
+
+	public static void appendRow(StringBuilder b, Collection<String> colNames, Function<String, String> colNameToRowData) { appendRow(b, "", colNames, colNameToRowData); }
+	public static void appendRow(StringBuilder b, String delim, Collection<String> colNames, Function<String, String> colNameToRowData) {
+
+		b.append(String.join(delim, colNames.stream().map(colNameToRowData).collect(Collectors.toList())));
+		b.append('\n');
+
+	}
+
+	private static String padded(String str, int padding) { return String.format("%" + padding + "s", str); }
 
 }
