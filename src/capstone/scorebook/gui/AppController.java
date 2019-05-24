@@ -10,11 +10,15 @@ import capstone.scorebook.data.concrete.ScoreDiscus;
 import capstone.scorebook.data.concrete.ScorebookDatabase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 public class AppController {
 	@FXML
@@ -30,6 +34,10 @@ public class AppController {
 	private TextField[] fields = {	// contains all the TextField objects
 		nameField, throwField, weatherField, windField, eventField, distanceField, meetField
 	};
+	
+	@FXML
+	private AnchorPane mainMenuPane, AthleteRegistrationPane, aboutPane;
+	
 	private ScorebookDatabase db;
 
 	public void dataBase() {
@@ -57,7 +65,7 @@ public class AppController {
 		ObservableList<String> roundOptions = FXCollections.observableArrayList("1", "2");
 		roundDrop = new ComboBox(roundOptions);
 		ObservableList<String> meetOptions = FXCollections.observableArrayList("1", "2");
-		meetDrop = new ComboBox(meetOptions);
+		meetDrop = new ComboBox<String>(meetOptions);
 	}
 
 	public void autoComplete() {
@@ -74,7 +82,7 @@ public class AppController {
 			}
 		}
 
-		nameDrop = new ComboBox(options); // present drop down
+		nameDrop = new ComboBox<String>(options); // present drop down
 	}
 
 	public String getPerson() {
@@ -129,9 +137,28 @@ public class AppController {
 			tf.clear();
 		}
 	}
+	
+	// MAIN MENU METHODS
 
-	public void exit() {
+	public void exit(ActionEvent e) {
 		System.exit(0);
+	}
+	
+	public void openAthleteRegistration (ActionEvent e) {
+		AthleteRegistrationPane.setVisible(true);
+	}
+	
+	public void openAbout(ActionEvent e) {
+		aboutPane.setVisible(true);
+	}
+	
+	
+	// Home Methods
+	public void goHomeFromAR(MouseEvent e) {
+		AthleteRegistrationPane.setVisible(false);
+	}
+	public void goHomeFromAbout(MouseEvent e) {
+		aboutPane.setVisible(false);
 	}
 
 }
