@@ -1,13 +1,14 @@
-package windowgui;
+package windowgui.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import windowgui.controller.SomeStuffController;
 
 public class MainPageController extends SomeStuffController {
 
 	@FXML
 	private Button registerMeetButton, registerAthleteButton, optionsButtion, inputDataButton, exitButton, dataButton,
-			aboutButton;
+		aboutButton;
 
 	public void exit() {
 		System.exit(0);
@@ -28,13 +29,13 @@ public class MainPageController extends SomeStuffController {
 	public void inputData() {
 		openFXML("ThrowData.fxml");
 	}
-	
+
 	public void optionsPage() {
-		
+
 	}
-	
+
 	public void viewData() {
-		
+
 	}
 
 }

@@ -2,9 +2,9 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" fx:controller="windowgui.MainPageController"
+<AnchorPane fx:id="rootPane" fx:controller="windowgui.controller.MainPageController"
 	    prefHeight="500" prefWidth="600"
 	    style="-fx-background-color: green;"
 	    stylesheets="windowgui/Style.css"
