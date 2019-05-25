@@ -1,75 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="rootPane"
-	    fx:controller="windowgui.controller.RegisterAthleteController"
-	    prefHeight="600" prefWidth="500"
-	    stylesheets="windowgui/Style.css"
-	    xmlns:fx="http://javafx.com/fxml">
+<AnchorPane fx:id="rootPane" prefHeight="463.0"
+	    prefWidth="393.0" style="-fx-background-color: green;"
+	    xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+	    fx:controller="windowgui.controller.RegisterMeetController">
 	<children>
-		<VBox fx:id="registerAthlete"
-		      prefWidth="500" prefHeight="400"
-		      layoutX="50" layoutY="100">
-			<children>
-				<GridPane>
-					<children>
-						<Label text="Last name"/>
-						<Label text="First name" GridPane.columnIndex="1"/>
-						<Label text="M.I" GridPane.columnIndex="2"/>
-
-						<TextField fx:id="lastNameField"
-							   GridPane.rowIndex="1"/>
-						<TextField fx:id="firstNameField" GridPane.columnIndex="1"
-							   GridPane.rowIndex="1"/>
-						<TextField fx:id="miField"
-							   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-					</children>
-				</GridPane>
-				<GridPane>
-					<children>
-						<Label text="Gender"/>
-						<CheckBox fx:id="male"
-							  text="Male"
-							  GridPane.rowIndex="1"/>
-						<CheckBox fx:id="female"
-							  text="Female"
-							  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-						<CheckBox fx:id="other"
-							  text="Other"
-							  GridPane.columnIndex="2" GridPane.rowIndex="1"/>
-					</children>
-				</GridPane>
-				<GridPane>
-					<children>
-						<Label text="School"/>
-						<Label text="Year of Graduation" GridPane.columnIndex="1"/>
-
-						<TextField fx:id="schoolField"
-							   GridPane.rowIndex="1"/>
-						<TextField fx:id="gradYearField"
-							   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-					</children>
-				</GridPane>
-				<Button fx:id="enterButton"
-					onAction="#enter"
-					text="Enter"/>
-			</children>
-		</VBox>
-		<ImageView layoutX="50" layoutY="50" onMouseClicked="#goHome" pickOnBounds="true"
-			   preserveRatio="true">
+		<Label layoutY="72.0" text="How many rounds in this meet?">
+			<font>
+				<Font size="20.0"/>
+			</font>
+		</Label>
+		<ImageView layoutX="14.0" layoutY="27.0"
+			   onMouseClicked="#goHome" pickOnBounds="true" preserveRatio="true">
 			<image>
 				<Image url="@../home.png"/>
 			</image>
 		</ImageView>
-		<Label layoutX="100" layoutY="50" text="ATHLETE REGISTRATION" textFill="WHITE">
-			<font>
-				<Font name="Avenir Heavy" size="24.0"/>
-			</font>
-		</Label>
+		<ComboBox fx:id="roundOptions" layoutX="303.0" layoutY="77.0"
+			  prefHeight="25.0" prefWidth="96.0"/>
+		<Button layoutX="303.0" layoutY="328.0" mnemonicParsing="false"
+			onAction="#enter" prefHeight="30.0" prefWidth="81.0"
+			style="-fx-background-radius: 15;" text="Enter"/>
+		<Label layoutX="31.0" layoutY="128.0"
+		       text="anything else we need in here?"/>
 	</children>
 </AnchorPane>
