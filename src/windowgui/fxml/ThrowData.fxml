@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="rootPane"
 	    fx:controller="windowgui.controller.AthleteThrowController"
-	    prefWidth="500" prefHeight="600"
+	    prefWidth="500" prefHeight="400"
 	    stylesheets="windowgui/Style.css"
 	    xmlns:fx="http://javafx.com/fxml">
 	<children>

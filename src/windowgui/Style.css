@@ -8,16 +8,22 @@ Label, CheckBox { -fx-text-fill: #ffffff }
 	-fx-background-radius: 10;
 	-fx-font-family: "Arial";
 	-fx-font-weight: bold;
-	-fx-font-size: 15px;
+	-fx-font-size: 15;
 	-fx-pref-width: 250;
 	-fx-pref-height: 100;
 }
 
 #menuItemLabels Label, #registerAthlete Label {
 	-fx-font-weight: bold;
-	-fx-font-size: 13px;
+	-fx-font-size: 13;
 }
 
 #registerAthlete { -fx-spacing: 25 } // VBox
 #registerAthlete GridPane { -fx-vgap: 2 }
+
 #miField { -fx-pref-column-count: 2 }
+#gradYearField { -fx-pref-column-count: 5 } // won't actually do this because the string "Year of Graduation" is too long
+
+#aboutinfo { -fx-vgap: 100 }
+
+#titleTeam, #titleSponsors { -fx-font-family: "Avenir Heavy"; -fx-font-size: 14 }

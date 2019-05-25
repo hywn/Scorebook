@@ -3,62 +3,58 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="463.0"
-	    prefWidth="393.0" style="-fx-background-color: green;"
-	    xmlns:fx="http://javafx.com/fxml"
-	    fx:controller="windowgui.controller.AboutController">
+<AnchorPane fx:id="rootPane"
+	    fx:controller="windowgui.controller.AboutController"
+	    prefWidth="600" prefHeight="500"
+	    style="-fx-background-color: green;"
+	    xmlns:fx="http://javafx.com/fxml">
 	<children>
-		<Label layoutX="249.0" layoutY="26.0" text="ABOUT"
-		       textFill="WHITE">
-			<font>
-				<Font name="Avenir Heavy" size="24.0"/>
-			</font>
-		</Label>
-		<Label layoutX="56.0" layoutY="69.0" prefHeight="106.0"
-		       prefWidth="471.0"
-		       text="This comprehensive athlete data tracker software was developed as a Capstone Senior Project by students at Woodgrove High School in Purcellville, VA. The software was developed by a team of students who are highly interested and skilled in the field of programming. This Athlete Tracker was developed in its entirety using Java."
-		       textAlignment="JUSTIFY" textFill="WHITE" wrapText="true"/>
-		<Label layoutX="56.0" layoutY="318.0" text="Development Team:"
-		       textFill="WHITE">
-			<font>
-				<Font name="Avenir Heavy" size="13.0"/>
-			</font>
-		</Label>
-		<Label layoutX="56.0" layoutY="337.0" text="Carson Forsyth"
-		       textFill="WHITE"/>
-		<Label layoutX="56.0" layoutY="352.0" text="Dominic Jimeno"
-		       textFill="WHITE"/>
-		<Label layoutX="56.0" layoutY="369.0" text="James Huang"
-		       textFill="WHITE"/>
-		<Label layoutX="56.0" layoutY="386.0" text="Jan Arvik"
-		       textFill="WHITE"/>
-		<Label layoutX="57.0" layoutY="403.0" text="Jason Garner"
-		       textFill="WHITE"/>
-		<Label layoutX="180.0" layoutY="337.0" text="Juan Jovel"
-		       textFill="WHITE"/>
-		<Label layoutX="180.0" layoutY="352.0" text="Sami Marzougui"
-		       textFill="WHITE"/>
-		<Label layoutX="180.0" layoutY="369.0" text="Thomas Hegerich"
-		       textFill="WHITE"/>
-		<Label layoutX="374.0" layoutY="318.0" text="Advisors/Sponsors:"
-		       textFill="WHITE">
-			<font>
-				<Font name="Avenir Heavy" size="13.0"/>
-			</font>
-		</Label>
-		<Label layoutX="374.0" layoutY="337.0" text="Natasha Shildneck"
-		       textFill="WHITE"/>
-		<Label layoutX="374.0" layoutY="352.0" text="Robert Petitt"
-		       textFill="WHITE"/>
-		<ImageView layoutX="42.0" layoutY="28.0"
-			   onMouseClicked="#goHome" pickOnBounds="true" preserveRatio="true">
+		<GridPane fx:id="aboutinfo"
+			  prefWidth="500" prefHeight="400"
+			  layoutX="50" layoutY="100">
+			<children>
+				<Label text="This comprehensive athlete data tracker software was developed as a Capstone Senior Project by students at Woodgrove High School in Purcellville, VA. The software was developed by a team of students who are highly interested and skilled in the field of programming. This Athlete Tracker was developed in its entirety using Java."
+				       prefWidth="550" GridPane.columnSpan="2"
+				       textAlignment="JUSTIFY" wrapText="true"/>
+				<GridPane GridPane.rowIndex="1" prefWidth="250" alignment="TOP_CENTER">
+					<children>
+						<Label fx:id="titleTeam" text="Development Team:"/>
+						<Label text="Jan Arvik" GridPane.rowIndex="1"/>
+						<Label text="Jason Garner" GridPane.rowIndex="2"/>
+						<Label text="Carson Forsyth"
+						       GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+						<Label text="Thomas Hegerich"
+						       GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+						<Label text="James Huang" GridPane.rowIndex="3"/>
+						<Label text="Dominic Jimeno"
+						       GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+						<Label text="Juan Jovel" GridPane.rowIndex="4"/>
+						<Label text="Sami Marzougui"
+						       GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+					</children>
+				</GridPane>
+				<GridPane GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="TOP_CENTER">
+					<children>
+						<Label fx:id="titleSponsors" text="Advisors/Sponsors:"/>
+						<Label text="Natasha Shildneck" GridPane.rowIndex="2"/>
+						<Label text="Robert Petitt" GridPane.rowIndex="1"/>
+					</children>
+				</GridPane>
+			</children>
+		</GridPane>
+		<ImageView layoutX="50" layoutY="50" onMouseClicked="#goHome" pickOnBounds="true"
+			   preserveRatio="true">
 			<image>
 				<Image url="@../home.png"/>
 			</image>
 		</ImageView>
+		<Label layoutX="100" layoutY="50" text="ABOUT">
+			<font>
+				<Font name="Avenir Heavy" size="24.0"/>
+			</font>
+		</Label>
 	</children>
 </AnchorPane>
-

@@ -13,7 +13,7 @@
 	    xmlns:fx="http://javafx.com/fxml">
 	<children>
 		<VBox fx:id="registerAthlete"
-		      prefWidth="600" prefHeight="500"
+		      prefWidth="500" prefHeight="400"
 		      layoutX="50" layoutY="100">
 			<children>
 				<GridPane>
