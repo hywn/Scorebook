@@ -7,12 +7,11 @@
 
 <AnchorPane fx:id="rootPane"
 	    fx:controller="windowgui.controller.AthleteThrowController"
-	    prefHeight="600" prefWidth="500"
-	    style="-fx-background-color: green;"
+	    prefWidth="500" prefHeight="600"
 	    stylesheets="windowgui/Style.css"
 	    xmlns:fx="http://javafx.com/fxml">
 	<children>
-		<GridPane fx:id="menuItemLabels" hgap="10.0" vgap="10.0"
+		<GridPane fx:id="menuItemLabels"
 			  prefWidth="600" prefHeight="500"
 			  layoutX="50" layoutY="100">
 			<children>

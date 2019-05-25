@@ -1,57 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="463.0"
-	    prefWidth="393.0" style="-fx-background-color: green;"
-	    xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	    fx:controller="windowgui.controller.RegisterAthleteController">
+<AnchorPane fx:id="rootPane"
+	    fx:controller="windowgui.controller.RegisterAthleteController"
+	    prefHeight="600" prefWidth="500"
+	    stylesheets="windowgui/Style.css"
+	    xmlns:fx="http://javafx.com/fxml">
 	<children>
-		<Label layoutX="148.0" layoutY="25.0"
-		       text="ATHLETE REGISTRATION" textFill="WHITE">
-			<font>
-				<Font name="Avenir Heavy" size="24.0"/>
-			</font>
-		</Label>
-		<TextField fx:id="lastNameField" layoutX="14.0"
-			   layoutY="91.0" prefHeight="27.0" prefWidth="135.0"/>
-		<TextField fx:id="firstNameField" layoutX="165.0"
-			   layoutY="91.0" prefHeight="27.0" prefWidth="135.0"/>
-		<TextField fx:id="miField" layoutX="320.0" layoutY="91.0"
-			   prefHeight="27.0" prefWidth="54.0"/>
-		<Label layoutX="14.0" layoutY="69.0" text="Last name"
-		       textFill="WHITE"/>
-		<Label layoutX="165.0" layoutY="69.0" text="First name"
-		       textFill="WHITE"/>
-		<Label layoutX="338.0" layoutY="69.0" text="M.I"
-		       textFill="WHITE"/>
-		<Label layoutX="14.0" layoutY="142.0" text="Gender"
-		       textFill="WHITE"/>
-		<CheckBox fx:id="male" layoutX="14.0" layoutY="167.0"
-			  mnemonicParsing="false" text="Male" textFill="WHITE"/>
-		<CheckBox fx:id="female" layoutX="95.0" layoutY="167.0"
-			  mnemonicParsing="false" text="Female" textFill="WHITE"/>
-		<CheckBox fx:id="other" layoutX="190.0" layoutY="167.0"
-			  mnemonicParsing="false" text="Other" textFill="WHITE"/>
-		<ImageView layoutX="14.0" layoutY="27.0"
-			   onMouseClicked="#goHome" pickOnBounds="true" preserveRatio="true">
+		<VBox fx:id="registerAthlete"
+		      prefWidth="600" prefHeight="500"
+		      layoutX="50" layoutY="100">
+			<children>
+				<GridPane>
+					<children>
+						<Label text="Last name"/>
+						<Label text="First name" GridPane.columnIndex="1"/>
+						<Label text="M.I" GridPane.columnIndex="2"/>
+
+						<TextField fx:id="lastNameField"
+							   GridPane.rowIndex="1"/>
+						<TextField fx:id="firstNameField" GridPane.columnIndex="1"
+							   GridPane.rowIndex="1"/>
+						<TextField fx:id="miField"
+							   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+					</children>
+				</GridPane>
+				<GridPane>
+					<children>
+						<Label text="Gender"/>
+						<CheckBox fx:id="male"
+							  text="Male"
+							  GridPane.rowIndex="1"/>
+						<CheckBox fx:id="female"
+							  text="Female"
+							  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+						<CheckBox fx:id="other"
+							  text="Other"
+							  GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+					</children>
+				</GridPane>
+				<GridPane>
+					<children>
+						<Label text="School"/>
+						<Label text="Year of Graduation" GridPane.columnIndex="1"/>
+
+						<TextField fx:id="schoolField"
+							   GridPane.rowIndex="1"/>
+						<TextField fx:id="gradYearField"
+							   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+					</children>
+				</GridPane>
+				<Button fx:id="enterButton"
+					onAction="#enter"
+					text="Enter"/>
+			</children>
+		</VBox>
+		<ImageView layoutX="50" layoutY="50" onMouseClicked="#goHome" pickOnBounds="true"
+			   preserveRatio="true">
 			<image>
 				<Image url="@../home.png"/>
 			</image>
 		</ImageView>
-		<Label layoutX="14.0" layoutY="203.0" text="School:"
-		       textFill="WHITE"/>
-		<TextField fx:id="schoolField" layoutX="14.0"
-			   layoutY="227.0" prefHeight="27.0" prefWidth="135.0"/>
-		<Button fx:id="enterButton" layoutX="389.0" layoutY="270.0" onAction="#enter"
-			mnemonicParsing="false" prefHeight="27.0" prefWidth="93.0"
-			text="Enter"/>
-		<Label layoutX="175.0" layoutY="203.0"
-		       text="Year of Graduation:" textFill="WHITE"/>
-		<TextField fx:id="gradYearField" layoutX="175.0"
-			   layoutY="227.0" prefHeight="27.0" prefWidth="54.0"/>
+		<Label layoutX="100" layoutY="50" text="ATHLETE REGISTRATION" textFill="WHITE">
+			<font>
+				<Font name="Avenir Heavy" size="24.0"/>
+			</font>
+		</Label>
 	</children>
 </AnchorPane>

@@ -1,4 +1,8 @@
-#menuButtons .button {
+AnchorPane { -fx-background-color: green; -fx-pref-height: 100 }
+GridPane { -fx-hgap: 10; -fx-vgap: 10 }
+Label, CheckBox { -fx-text-fill: #ffffff }
+
+#menuButtons Button {
 	-fx-background-color: #191970;
 	-fx-text-fill: #ffffff;
 	-fx-background-radius: 10;
@@ -9,8 +13,11 @@
 	-fx-pref-height: 100;
 }
 
-#menuItemLabels Label {
-	-fx-text-fill: #ffffff;
+#menuItemLabels Label, #registerAthlete Label {
 	-fx-font-weight: bold;
 	-fx-font-size: 13px;
 }
+
+#registerAthlete { -fx-spacing: 25 } // VBox
+#registerAthlete GridPane { -fx-vgap: 2 }
+#miField { -fx-pref-column-count: 2 }
