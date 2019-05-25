@@ -1,5 +1,6 @@
-package windowgui;
+package windowgui.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,9 +11,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+
+import static capstone.scorebook.data.concrete.ScorebookDatabase.getDB;
 
 public class AthleteThrowController extends SomeStuffController {
 	@FXML
@@ -29,17 +31,20 @@ public class AthleteThrowController extends SomeStuffController {
 	public void weatherOptions() {
 		weatherBox = new ComboBox(FXCollections.observableArrayList("Sunny", "Rainy"));
 	}
-	
+
 	public void windOptions() {
-		windBox = new ComboBox(FXCollections.observableArrayList("None", "Little","Medium", "High"));
+		windBox = new ComboBox(FXCollections.observableArrayList("None", "Little", "Medium", "High"));
 	}
-	
+
 	public void throwOptions() {
 		throwBox = new ComboBox(FXCollections.observableArrayList("1", "2", "3", "4"));
 	}
 
 	public void autoComplete() {
-		List<String> names = db.getAllAthletes().stream().map(Athlete::getFullName).collect(Collectors.toList());
+		
+		List<String> names = getDB().getAllAthletes().stream().map(Athlete::getFullName).collect(Collectors.toList());
+
+		System.out.println(Arrays.toString(names.toArray()));
 
 		ObservableList<String> options = FXCollections.observableArrayList();
 
@@ -61,7 +66,7 @@ public class AthleteThrowController extends SomeStuffController {
 	}
 
 	public String getAthleteID() {
-		List<Athlete> athletes = db.getAllAthletes();
+		List<Athlete> athletes = getDB().getAllAthletes();
 
 		for (Athlete a : athletes)
 			if (a.getFullName().equals(getName()))
@@ -89,9 +94,9 @@ public class AthleteThrowController extends SomeStuffController {
 	public void enter() {
 		// enter into database
 		if (eventBox.getValue().equals("Discus")) {
-			db.insert(new ScoreDiscus(getMeet(), getAthleteID(), getWeather(), getThrow(), getDistance()));
+			getDB().insert(new ScoreDiscus(getMeet(), getAthleteID(), getWeather(), getThrow(), getDistance()));
 		} else if (eventBox.getValue().equals("Shotput")) {
-			db.insert(new ScoreShotput(getMeet(), getAthleteID(), getWeather(), getThrow(), getDistance()));
+			getDB().insert(new ScoreShotput(getMeet(), getAthleteID(), getWeather(), getThrow(), getDistance()));
 		}
 		nameField.clear();
 		feetField.clear();
