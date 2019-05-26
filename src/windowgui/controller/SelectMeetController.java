@@ -20,6 +20,7 @@ public class SelectMeetController extends BaseController {
 	private void initialize() {
 
 		selectMeetBox.getItems().setAll(ScorebookDatabase.getDB().getAllMeets());
+		selectMeetBox.getSelectionModel().selectFirst();
 
 	}
 

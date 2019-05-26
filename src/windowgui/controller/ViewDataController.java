@@ -9,8 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import java.util.List;
-
 public class ViewDataController extends MeetController {
 
 	@FXML
@@ -18,20 +16,24 @@ public class ViewDataController extends MeetController {
 
 	void onSetMeet() {
 
-		TableColumn<ScoreDiscus, String> athleteCol = new TableColumn("Athlete");
-		athleteCol.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getAthleteID()));
+		ScorebookDatabase db = ScorebookDatabase.getDB();
 
-		TableColumn<ScoreDiscus, Integer> orderCol = new TableColumn("Order");
+		TableColumn<ScoreDiscus, String> athleteCol, weatherCol;
+		TableColumn<ScoreDiscus, Integer> orderCol, distanceCol;
+
+		athleteCol = new TableColumn("Athlete");
+		orderCol = new TableColumn("Order");
+		distanceCol = new TableColumn("Distance");
+		weatherCol = new TableColumn("Weather");
+
+		athleteCol.setCellValueFactory(p -> new SimpleStringProperty(db.getAthlete(p.getValue().getAthleteID()).getFullName()));
 		orderCol.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getOrder()).asObject()); // why asObject??
-
-		TableColumn<ScoreDiscus, Integer> distanceCol = new TableColumn("Distance");
 		distanceCol.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getDistance()).asObject());
+		weatherCol.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getWeatherID()));
 
-		scoreDataTable.getColumns().setAll(athleteCol, orderCol, distanceCol);
+		scoreDataTable.getColumns().setAll(athleteCol, orderCol, distanceCol, weatherCol);
 
-		List<ScoreDiscus> scores = ScorebookDatabase.getDB().getDiscusScores(meet.getID());
-
-		scoreDataTable.setItems(FXCollections.observableList(scores));
+		scoreDataTable.setItems(FXCollections.observableList(db.getDiscusScores(meet.getID())));
 
 	}
 

@@ -1,7 +1,6 @@
 package windowgui.controller;
 
 import capstone.scorebook.data.concrete.Athlete;
-import capstone.scorebook.data.concrete.Meet;
 import capstone.scorebook.data.concrete.ScoreDiscus;
 import capstone.scorebook.data.concrete.ScoreShotput;
 import javafx.collections.FXCollections;
