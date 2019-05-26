@@ -15,10 +15,10 @@
 			  prefWidth="600" prefHeight="500"
 			  layoutX="50" layoutY="100">
 			<children>
-				<Label text="Event:"/>
-				<ComboBox fx:id="eventBox"
-					  onAction="#eventOptions"
-					  GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+				<Label text="Meet:"/>
+				<Label fx:id="meetDetails"
+				       text="meet details"
+				       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
 				<Label text="Weather:" GridPane.rowIndex="1"/>
 				<ComboBox fx:id="weatherBox"

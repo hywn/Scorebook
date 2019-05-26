@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane fx:id="rootPane"
+	    fx:controller="windowgui.controller.SelectMeetController"
+	    prefHeight="600" prefWidth="500"
+	    stylesheets="windowgui/Style.css"
+	    xmlns:fx="http://javafx.com/fxml">
+	<children>
+		<VBox fx:id="registerAthlete"
+		      prefWidth="500" prefHeight="400"
+		      layoutX="50" layoutY="100">
+			<ComboBox fx:id="selectMeetBox"
+				  promptText="Select meet..."/>
+			<Button fx:id="selectMeetButton"
+				onAction="#enterData"
+				text="OK"/>
+		</VBox>
+	</children>
+</AnchorPane>

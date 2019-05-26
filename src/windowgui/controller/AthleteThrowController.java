@@ -1,10 +1,7 @@
 package windowgui.controller;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import capstone.scorebook.data.concrete.Athlete;
+import capstone.scorebook.data.concrete.Meet;
 import capstone.scorebook.data.concrete.ScoreDiscus;
 import capstone.scorebook.data.concrete.ScoreShotput;
 import javafx.collections.FXCollections;
@@ -12,11 +9,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static capstone.scorebook.data.concrete.ScorebookDatabase.getDB;
 
 public class AthleteThrowController extends SomeStuffController {
+
+	@FXML
+	private Label meetDetails;
 	@FXML
 	private TextField nameField, meetField, feetField, inchField;
 	@FXML
@@ -41,7 +46,7 @@ public class AthleteThrowController extends SomeStuffController {
 	}
 
 	public void autoComplete() {
-		
+
 		List<String> names = getDB().getAllAthletes().stream().map(Athlete::getFullName).collect(Collectors.toList());
 
 		System.out.println(Arrays.toString(names.toArray()));
@@ -56,6 +61,8 @@ public class AthleteThrowController extends SomeStuffController {
 
 		autoBox = new ComboBox<String>(options); // present drop down
 	}
+
+	public void setMeet(Meet meet) { meetDetails.setText(meet.toString()); }
 
 	public String getName() {
 		return nameField.getText();
