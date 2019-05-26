@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="rootPane"
@@ -63,11 +61,6 @@
 					GridPane.columnIndex="1" GridPane.rowIndex="8"/>
 			</children>
 		</GridPane>
-		<ImageView layoutX="50" layoutY="50" onMouseClicked="#goHome" pickOnBounds="true"
-			   preserveRatio="true">
-			<image>
-				<Image url="@../home.png"/>
-			</image>
-		</ImageView>
+		<fx:include source="HomeButton.fxml" onMouseClicked="#goHome"/>
 	</children>
 </AnchorPane>
