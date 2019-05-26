@@ -23,7 +23,7 @@ public class SelectMeetController extends SomeStuffController {
 
 	public void enterData() {
 
-		this.<AthleteThrowController>openFXML("ThrowData.fxml", controller -> controller.setMeet(selectMeetBox.getValue()));
+		this.<ThrowDataController>openFXML("ThrowData.fxml", controller -> controller.setMeet(selectMeetBox.getValue()));
 
 	}
 

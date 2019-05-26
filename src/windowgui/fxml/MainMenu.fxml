@@ -5,7 +5,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane"
-	    fx:controller="windowgui.controller.MainPageController"
+	    fx:controller="windowgui.controller.MainMenuController"
 	    prefWidth="600" prefHeight="500"
 	    stylesheets="windowgui/Style.css"
 	    xmlns:fx="javafx.com/fxml">

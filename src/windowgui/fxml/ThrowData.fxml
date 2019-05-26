@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="rootPane"
-	    fx:controller="windowgui.controller.AthleteThrowController"
+	    fx:controller="windowgui.controller.ThrowDataController"
 	    prefWidth="500" prefHeight="400"
 	    stylesheets="windowgui/Style.css"
 	    xmlns:fx="http://javafx.com/fxml">

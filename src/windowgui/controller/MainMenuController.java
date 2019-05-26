@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import windowgui.controller.SomeStuffController;
 
-public class MainPageController extends SomeStuffController {
+public class MainMenuController extends SomeStuffController {
 
 	@FXML
 	private Button registerMeetButton, registerAthleteButton, optionsButtion, inputDataButton, exitButton, dataButton,

@@ -12,7 +12,7 @@ public class SomeStuffController {
 	@FXML
 	private AnchorPane rootPane;
 
-	public void goHome() { openFXML("MainPage.fxml"); }
+	public void goHome() { openFXML("MainMenu.fxml"); }
 
 	protected void openFXML(String file) {
 
