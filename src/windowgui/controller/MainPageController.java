@@ -27,7 +27,7 @@ public class MainPageController extends SomeStuffController {
 	}
 
 	public void inputData() {
-		openFXML("ThrowData.fxml");
+		openFXML("SelectMeet.fxml");
 	}
 
 	public void optionsPage() {

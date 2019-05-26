@@ -40,4 +40,7 @@ public class Meet extends Location {
 	public int getIsIndoor() { return getValue(COLUMN_INDOOR); }
 	public int getTempAvgFahrenheit() { return getValue(COLUMN_FAHRENHEIT_AVG); }
 
+	public String toString() {
+		return String.format("%s at %s", getDate(), getAddressID());
+	}
 }
