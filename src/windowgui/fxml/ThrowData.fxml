@@ -18,28 +18,30 @@
 				       text="meet details"
 				       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-				<Label text="Weather:" GridPane.rowIndex="1"/>
+				<Label text="Event:" GridPane.rowIndex="1"/>
+				<ComboBox fx:id="eventBox"
+					  onAction="#windOptions"
+					  promptText="None"
+					  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+				<Label text="Weather:" GridPane.rowIndex="2"/>
 				<ComboBox fx:id="weatherBox"
 					  onAction="#weatherOptions"
 					  promptText="Sunny"
-					  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+					  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-				<Label text="Wind Level:" GridPane.rowIndex="2"/>
+				<Label text="Wind Level:" GridPane.rowIndex="3"/>
 				<ComboBox fx:id="windBox"
 					  onAction="#windOptions"
 					  promptText="None"
-					  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-
-				<Label text="Throw #:" GridPane.rowIndex="3"/>
-				<ComboBox fx:id="throwBox"
-					  onAction="#throwOptions"
 					  GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
-				<Label text="Meet #:" GridPane.rowIndex="4"/>
-				<TextField fx:id="meetField"
-					   GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+				<Label text="Throw #:" GridPane.rowIndex="4"/>
+				<ComboBox fx:id="throwBox"
+					  onAction="#throwOptions"
+					  GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
-				<Label text="Name:" GridPane.rowIndex="5"/>
+				<Label text="Name:" GridPane.rowIndex="6"/>
 				<TextField fx:id="nameField"
 					   onAction="#autoComplete"
 					   GridPane.columnIndex="1" GridPane.rowIndex="5"/>

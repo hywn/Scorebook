@@ -15,7 +15,7 @@ public class SelectMeetController extends BaseController {
 	private Button selectMeetButton;
 
 	@FXML
-	protected void initialize() {
+	private void initialize() {
 
 		selectMeetBox.getItems().setAll(ScorebookDatabase.getDB().getAllMeets());
 

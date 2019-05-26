@@ -20,29 +20,46 @@ import static capstone.scorebook.data.concrete.ScorebookDatabase.getDB;
 
 public class ThrowDataController extends BaseController {
 
+	private Meet meet;
+
 	@FXML
 	private Label meetDetails;
 	@FXML
-	private TextField nameField, meetField, feetField, inchField;
+	private TextField nameField, feetField, inchField;
 	@FXML
-	private ComboBox autoBox, eventBox, weatherBox, windBox, throwBox;
+	private ComboBox<String> eventBox, weatherBox, windBox, autoBox;
+	@FXML
+	private ComboBox<Integer> throwBox;
 	@FXML
 	private Button enter;
 
-	public void eventOptions() {
-		eventBox = new ComboBox(FXCollections.observableArrayList("Discus", "Shotput"));
+	@FXML
+	private void initialize() {
+
+		eventBox.getItems().setAll(Arrays.asList("Discus", "Shotput"));
+		weatherBox.getItems().setAll(Arrays.asList("Sunny", "Rainy"));
+		windBox.getItems().setAll(Arrays.asList("None", "Little", "Medium", "High"));
+		throwBox.getItems().setAll(Arrays.asList(1, 2, 3, 4));
+
+		for (ComboBox b : Arrays.asList(eventBox, weatherBox, windBox, throwBox))
+			b.getSelectionModel().selectFirst();
+
 	}
 
-	public void weatherOptions() {
-		weatherBox = new ComboBox(FXCollections.observableArrayList("Sunny", "Rainy"));
-	}
+	// enter into database
+	public void enter() {
 
-	public void windOptions() {
-		windBox = new ComboBox(FXCollections.observableArrayList("None", "Little", "Medium", "High"));
-	}
+		if (eventBox.getValue().equals("Discus"))
+			getDB().insert(new ScoreDiscus(meet.getID(), getAthleteID(), getWeather(), getThrow(), getDistanceInches()));
 
-	public void throwOptions() {
-		throwBox = new ComboBox(FXCollections.observableArrayList("1", "2", "3", "4"));
+		else if (eventBox.getValue().equals("Shotput"))
+			getDB().insert(new ScoreShotput(meet.getID(), getAthleteID(), getWeather(), getThrow(), getDistanceInches()));
+
+		nameField.clear();
+		feetField.clear();
+		inchField.clear();
+		autoBox.getItems().clear();
+
 	}
 
 	public void autoComplete() {
@@ -53,25 +70,19 @@ public class ThrowDataController extends BaseController {
 
 		ObservableList<String> options = FXCollections.observableArrayList();
 
-		for (String str : names) {
-			if (str.contains(getName())) {
+		for (String str : names)
+			if (str.contains(getName()))
 				options.add(str); // add name to drop down
-			}
-		}
 
-		autoBox = new ComboBox<String>(options); // present drop down
+		autoBox = new ComboBox(options); // present drop down
+
 	}
 
-	public void setMeet(Meet meet) { meetDetails.setText(meet.toString()); }
-
-	public String getName() {
-		return nameField.getText();
-	}
-
-	public String getMeet() {
-		return meetField.getText();
-	}
-
+	public String getName() { return nameField.getText(); }
+	public String getWeather() { return weatherBox.getValue(); }
+	public String getWind() { return windBox.getValue(); }
+	public int getThrow() { return throwBox.getValue(); }
+	public int getDistanceInches() { return Integer.parseInt(feetField.getText()) * 12 + Integer.parseInt(inchField.getText()); }
 	public String getAthleteID() {
 		List<Athlete> athletes = getDB().getAllAthletes();
 
@@ -82,33 +93,9 @@ public class ThrowDataController extends BaseController {
 		return null;
 	}
 
-	public String getWeather() {
-		return (String) weatherBox.getValue();
-	}
-
-	public String getWind() {
-		return (String) windBox.getValue();
-	}
-
-	public int getThrow() {
-		return (int) throwBox.getValue();
-	}
-
-	public int getDistance() {
-		return Integer.parseInt(feetField.getText()) * 12 + Integer.parseInt(inchField.getText());
-	}
-
-	public void enter() {
-		// enter into database
-		if (eventBox.getValue().equals("Discus")) {
-			getDB().insert(new ScoreDiscus(getMeet(), getAthleteID(), getWeather(), getThrow(), getDistance()));
-		} else if (eventBox.getValue().equals("Shotput")) {
-			getDB().insert(new ScoreShotput(getMeet(), getAthleteID(), getWeather(), getThrow(), getDistance()));
-		}
-		nameField.clear();
-		feetField.clear();
-		inchField.clear();
-		autoBox.getItems().clear();
+	public void setMeet(Meet meet) {
+		this.meet = meet;
+		meetDetails.setText(meet.toString());
 	}
 
 }
