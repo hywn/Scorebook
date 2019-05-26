@@ -37,6 +37,11 @@ public class Run {
 
 		db.insert(meet);
 
+		db.insert(new ScoreDiscus(meet.getID(), bob.getID(), "Sunny", 1, 100));
+		db.insert(new ScoreDiscus(meet.getID(), bob.getID(), "Sunny", 2, 200));
+		db.insert(new ScoreDiscus(meet.getID(), bob.getID(), "Sunny", 3, 300));
+		db.insert(new ScoreDiscus(meet.getID(), bob.getID(), "Sunny", 4, 400));
+
 		//TODO: add searching scores by athlete ID and get PRs and stuff
 
 	}

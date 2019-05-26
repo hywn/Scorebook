@@ -8,6 +8,8 @@ import javafx.scene.control.ComboBox;
 
 public class SelectMeetController extends BaseController {
 
+	private String fxmlToOpen;
+
 	@FXML
 	private ComboBox<Meet> selectMeetBox;
 
@@ -23,8 +25,12 @@ public class SelectMeetController extends BaseController {
 
 	public void enterData() {
 
-		this.<ThrowDataController>openFXML("ThrowData.fxml", controller -> controller.setMeet(selectMeetBox.getValue()));
+		System.out.println(fxmlToOpen);
+
+		this.<MeetController>openFXML(fxmlToOpen, controller -> controller.setMeet(selectMeetBox.getValue()));
 
 	}
+
+	public void setFXMLtoOpen(String fxml) { this.fxmlToOpen = fxml; }
 
 }

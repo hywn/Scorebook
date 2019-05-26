@@ -20,25 +20,21 @@
 
 				<Label text="Event:" GridPane.rowIndex="1"/>
 				<ComboBox fx:id="eventBox"
-					  onAction="#windOptions"
 					  promptText="None"
 					  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
 				<Label text="Weather:" GridPane.rowIndex="2"/>
 				<ComboBox fx:id="weatherBox"
-					  onAction="#weatherOptions"
 					  promptText="Sunny"
 					  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
 				<Label text="Wind Level:" GridPane.rowIndex="3"/>
 				<ComboBox fx:id="windBox"
-					  onAction="#windOptions"
 					  promptText="None"
 					  GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
 				<Label text="Throw #:" GridPane.rowIndex="4"/>
 				<ComboBox fx:id="throwBox"
-					  onAction="#throwOptions"
 					  GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
 				<Label text="Name:" GridPane.rowIndex="6"/>

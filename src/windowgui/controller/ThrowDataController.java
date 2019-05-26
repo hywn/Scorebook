@@ -18,9 +18,7 @@ import java.util.stream.Collectors;
 
 import static capstone.scorebook.data.concrete.ScorebookDatabase.getDB;
 
-public class ThrowDataController extends BaseController {
-
-	private Meet meet;
+public class ThrowDataController extends MeetController {
 
 	@FXML
 	private Label meetDetails;
@@ -93,9 +91,6 @@ public class ThrowDataController extends BaseController {
 		return null;
 	}
 
-	public void setMeet(Meet meet) {
-		this.meet = meet;
-		meetDetails.setText(meet.toString());
-	}
+	public void onSetMeet() { meetDetails.setText(meet.toString()); }
 
 }

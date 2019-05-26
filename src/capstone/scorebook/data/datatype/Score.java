@@ -30,4 +30,10 @@ public abstract class Score extends Storable { // a score belonging to a meet an
 	public String getAthleteID() { return getValue(COLUMN_ATHLETE_ID); }
 	public String getWeatherID() { return getValue(COLUMN_WEATHER_ID); }
 
+	public static String queryGetAllByMeetID(String mid, StorableStruct struct) {
+		return String.format("select * from %s where %s",
+				     struct.TABLE,
+				     toCVPair(COLUMN_MEET_ID, mid));
+	}
+
 }

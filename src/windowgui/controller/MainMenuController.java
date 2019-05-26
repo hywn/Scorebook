@@ -26,7 +26,7 @@ public class MainMenuController extends BaseController {
 	}
 
 	public void inputData() {
-		openFXML("SelectMeet.fxml");
+		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ThrowData.fxml"));
 	}
 
 	public void optionsPage() {
@@ -34,7 +34,7 @@ public class MainMenuController extends BaseController {
 	}
 
 	public void viewData() {
-
+		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ViewData.fxml"));
 	}
 
 }

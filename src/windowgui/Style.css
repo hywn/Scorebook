@@ -27,3 +27,5 @@ Label, CheckBox { -fx-text-fill: #ffffff }
 #aboutinfo { -fx-vgap: 100 }
 
 #titleTeam, #titleSponsors { -fx-font-family: "Avenir Heavy"; -fx-font-size: 14 }
+
+TableView Label { -fx-text-fill: #000000 }

@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class BaseController {
+public abstract class BaseController {
 
 	@FXML
 	private AnchorPane rootPane;
