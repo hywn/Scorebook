@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
-public class SelectMeetController extends SomeStuffController {
+public class SelectMeetController extends BaseController {
 
 	@FXML
 	private ComboBox<Meet> selectMeetBox;

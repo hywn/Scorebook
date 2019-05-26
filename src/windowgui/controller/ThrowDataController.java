@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 import static capstone.scorebook.data.concrete.ScorebookDatabase.getDB;
 
-public class ThrowDataController extends SomeStuffController {
+public class ThrowDataController extends BaseController {
 
 	@FXML
 	private Label meetDetails;
