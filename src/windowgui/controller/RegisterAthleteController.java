@@ -34,13 +34,14 @@ public class RegisterAthleteController extends BaseController {
 
 		// clear stuff
 		System.out.println(getSchoolID()+getGradYear()+ getName());
+		
+		ScorebookDatabase.getDB().insert(new Athlete(getSchoolID(), getGradYear(), getName()));
+
 
 
 		for (TextField f : Arrays.asList(lastNameField, firstNameField, schoolField, gradYearField))
 			f.clear();
 
-		System.out.println(getSchoolID()+getGradYear()+ getName());
-		ScorebookDatabase.getDB().insert(new Athlete(getSchoolID(), getGradYear(), getName()));
 
 	}
 }
