@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane"
+	    fx:controller="windowgui.controller.ViewDataController"
+	    prefWidth="600" prefHeight="500"
+	    style="-fx-background-color: green;"
+	    xmlns:fx="http://javafx.com/fxml">
+	<children>
+		<TableView fx:id="scoreDataTable"
+			   prefWidth="500" prefHeight="400"
+			   layoutX="50" layoutY="100">
+		</TableView>
+		<fx:include source="HomeButton.fxml" onMouseClicked="#goHome"/>
+		<Label layoutX="100" layoutY="50" text="DATA">
+			<font>
+				<Font name="Avenir Heavy" size="24.0"/>
+			</font>
+		</Label>
+	</children>
+</AnchorPane>

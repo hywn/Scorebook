@@ -5,9 +5,8 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 import java.util.Arrays;
-import java.util.Collections;
 
-public class RegisterAthleteController extends SomeStuffController {
+public class RegisterAthleteController extends BaseController {
 
 	@FXML
 	private TextField lastNameField, firstNameField, miField, schoolField, gradYearField;

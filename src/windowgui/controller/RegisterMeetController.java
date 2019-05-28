@@ -3,7 +3,7 @@ package windowgui.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 
-public class RegisterMeetController extends SomeStuffController {
+public class RegisterMeetController extends BaseController {
 	@FXML
 	private ComboBox roundOptions;
 

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
@@ -45,12 +43,7 @@
 				</GridPane>
 			</children>
 		</GridPane>
-		<ImageView layoutX="50" layoutY="50" onMouseClicked="#goHome" pickOnBounds="true"
-			   preserveRatio="true">
-			<image>
-				<Image url="@../home.png"/>
-			</image>
-		</ImageView>
+		<fx:include source="HomeButton.fxml" onMouseClicked="#goHome"/>
 		<Label layoutX="100" layoutY="50" text="ABOUT">
 			<font>
 				<Font name="Avenir Heavy" size="24.0"/>

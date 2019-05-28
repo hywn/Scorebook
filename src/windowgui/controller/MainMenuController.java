@@ -2,9 +2,8 @@ package windowgui.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import windowgui.controller.SomeStuffController;
 
-public class MainPageController extends SomeStuffController {
+public class MainMenuController extends BaseController {
 
 	@FXML
 	private Button registerMeetButton, registerAthleteButton, optionsButtion, inputDataButton, exitButton, dataButton,
@@ -27,7 +26,7 @@ public class MainPageController extends SomeStuffController {
 	}
 
 	public void inputData() {
-		openFXML("SelectMeet.fxml");
+		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ThrowData.fxml"));
 	}
 
 	public void optionsPage() {
@@ -35,7 +34,7 @@ public class MainPageController extends SomeStuffController {
 	}
 
 	public void viewData() {
-
+		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ViewData.fxml"));
 	}
 
 }

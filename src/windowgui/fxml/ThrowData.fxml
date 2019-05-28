@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 
 <AnchorPane fx:id="rootPane"
-	    fx:controller="windowgui.controller.AthleteThrowController"
+	    fx:controller="windowgui.controller.ThrowDataController"
 	    prefWidth="500" prefHeight="400"
 	    stylesheets="windowgui/Style.css"
 	    xmlns:fx="http://javafx.com/fxml">
@@ -20,28 +18,26 @@
 				       text="meet details"
 				       GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
-				<Label text="Weather:" GridPane.rowIndex="1"/>
-				<ComboBox fx:id="weatherBox"
-					  onAction="#weatherOptions"
-					  promptText="Sunny"
+				<Label text="Event:" GridPane.rowIndex="1"/>
+				<ComboBox fx:id="eventBox"
+					  promptText="None"
 					  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
-				<Label text="Wind Level:" GridPane.rowIndex="2"/>
-				<ComboBox fx:id="windBox"
-					  onAction="#windOptions"
-					  promptText="None"
+				<Label text="Weather:" GridPane.rowIndex="2"/>
+				<ComboBox fx:id="weatherBox"
+					  promptText="Sunny"
 					  GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
-				<Label text="Throw #:" GridPane.rowIndex="3"/>
-				<ComboBox fx:id="throwBox"
-					  onAction="#throwOptions"
+				<Label text="Wind Level:" GridPane.rowIndex="3"/>
+				<ComboBox fx:id="windBox"
+					  promptText="None"
 					  GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
-				<Label text="Meet #:" GridPane.rowIndex="4"/>
-				<TextField fx:id="meetField"
-					   GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+				<Label text="Throw #:" GridPane.rowIndex="4"/>
+				<ComboBox fx:id="throwBox"
+					  GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
-				<Label text="Name:" GridPane.rowIndex="5"/>
+				<Label text="Name:" GridPane.rowIndex="6"/>
 				<TextField fx:id="nameField"
 					   onAction="#autoComplete"
 					   GridPane.columnIndex="1" GridPane.rowIndex="5"/>
@@ -63,11 +59,6 @@
 					GridPane.columnIndex="1" GridPane.rowIndex="8"/>
 			</children>
 		</GridPane>
-		<ImageView layoutX="50" layoutY="50" onMouseClicked="#goHome" pickOnBounds="true"
-			   preserveRatio="true">
-			<image>
-				<Image url="@../home.png"/>
-			</image>
-		</ImageView>
+		<fx:include source="HomeButton.fxml" onMouseClicked="#goHome"/>
 	</children>
 </AnchorPane>

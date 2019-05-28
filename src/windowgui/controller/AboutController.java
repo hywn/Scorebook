@@ -1,5 +1,5 @@
 package windowgui.controller;
 
-public class AboutController extends SomeStuffController {
+public class AboutController extends BaseController {
 
 }

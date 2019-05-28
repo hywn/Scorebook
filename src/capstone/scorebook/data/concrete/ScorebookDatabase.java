@@ -3,6 +3,7 @@ package capstone.scorebook.data.concrete;
 import capstone.scorebook.data.Database;
 import capstone.scorebook.data.StorableStruct;
 import capstone.scorebook.data.datatype.IDStorable;
+import capstone.scorebook.data.datatype.Score;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -33,5 +34,7 @@ public class ScorebookDatabase extends Database {
 	public School getSchool(String sid) { return querySelectByID(School.STRUCT, sid); }
 
 	// scores and weather should always be selected by meet/student
+	// TODO: probably need to rework how scores work
+	public ArrayList<ScoreDiscus> getDiscusScores(String mid) { return query(ScoreDiscus.STRUCT, Score.queryGetAllByMeetID(mid, ScoreDiscus.STRUCT)); } // no static abstract...
 
 }

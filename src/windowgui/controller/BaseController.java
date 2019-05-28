@@ -7,12 +7,12 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class SomeStuffController {
+public abstract class BaseController {
 
 	@FXML
 	private AnchorPane rootPane;
 
-	public void goHome() { openFXML("MainPage.fxml"); }
+	public void goHome() { openFXML("MainMenu.fxml"); }
 
 	protected void openFXML(String file) {
 

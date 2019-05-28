@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane fx:id="rootPane"
 	    fx:controller="windowgui.controller.RegisterAthleteController"
 	    prefHeight="600" prefWidth="500"
@@ -59,12 +58,7 @@
 					text="Enter"/>
 			</children>
 		</VBox>
-		<ImageView layoutX="50" layoutY="50" onMouseClicked="#goHome" pickOnBounds="true"
-			   preserveRatio="true">
-			<image>
-				<Image url="@../home.png"/>
-			</image>
-		</ImageView>
+		<fx:include source="HomeButton.fxml" onMouseClicked="#goHome"/>
 		<Label layoutX="100" layoutY="50" text="ATHLETE REGISTRATION" textFill="WHITE">
 			<font>
 				<Font name="Avenir Heavy" size="24.0"/>
