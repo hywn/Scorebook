@@ -22,21 +22,23 @@ public class Main extends Application {
 			Scene scene = new Scene(root, 600, 600);
 			scene.setFill(Color.TRANSPARENT);
 			root.setBackground(Background.EMPTY);
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			root.setOnMousePressed(new EventHandler<MouseEvent>() {
 				@Override
-				public void handle(MouseEvent e) {
-					xOffset = e.getSceneX();
-					yOffset = e.getSceneY();
+				public void handle(MouseEvent event) {
+					xOffset = event.getSceneX();
+					yOffset = event.getSceneY();
 				}
+
 			});
+
 			root.setOnMouseDragged(new EventHandler<MouseEvent>() {
 				@Override
-				public void handle(MouseEvent e) {
-					primaryStage.setX(e.getScreenX() - xOffset);
-					primaryStage.setY(e.getScreenY() - yOffset);
+				public void handle(MouseEvent event) {
+					primaryStage.setX(event.getScreenX() - xOffset);
+					primaryStage.setY(event.getScreenY() - yOffset);
 				}
 			});
-			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {
