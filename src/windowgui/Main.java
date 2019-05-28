@@ -1,4 +1,4 @@
-package capstone.scorebook.gui;
+package windowgui;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -17,28 +17,26 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			AnchorPane root = (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("AppLayout.fxml"));
+			AnchorPane root = (AnchorPane) FXMLLoader
+					.load(getClass().getClassLoader().getResource("windowgui/fxml/MainMenu.fxml"));
 			Scene scene = new Scene(root, 600, 600);
 			scene.setFill(Color.TRANSPARENT);
 			root.setBackground(Background.EMPTY);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			root.setOnMousePressed(new EventHandler<MouseEvent>() {
 				@Override
-				public void handle(MouseEvent event) {
-					xOffset = event.getSceneX();
-					yOffset = event.getSceneY();
+				public void handle(MouseEvent e) {
+					xOffset = e.getSceneX();
+					yOffset = e.getSceneY();
 				}
-
 			});
-
 			root.setOnMouseDragged(new EventHandler<MouseEvent>() {
 				@Override
-				public void handle(MouseEvent event) {
-					primaryStage.setX(event.getScreenX() - xOffset);
-					primaryStage.setY(event.getScreenY() - yOffset);
+				public void handle(MouseEvent e) {
+					primaryStage.setX(e.getScreenX() - xOffset);
+					primaryStage.setY(e.getScreenY() - yOffset);
 				}
 			});
+			primaryStage.initStyle(StageStyle.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (Exception e) {

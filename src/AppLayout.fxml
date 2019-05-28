@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -9,7 +13,7 @@
    <children>
       <AnchorPane layoutX="-29.0" layoutY="-32.0" prefHeight="609.0" prefWidth="606.0">
          <children>
-            <AnchorPane layoutX="29.0" layoutY="31.0" prefHeight="97.0" prefWidth="582.0" style="-fx-background-color: GREEN; -fx-background-radius: 10;">
+            <AnchorPane fx:id="mainMenuPane" layoutX="29.0" layoutY="31.0" prefHeight="97.0" prefWidth="582.0" style="-fx-background-color: GREEN; -fx-background-radius: 10;">
                <children>
                   <Label layoutX="56.0" layoutY="20.0" text="ATHLETE TRACKER" textFill="WHITE">
                      <font>
@@ -18,43 +22,107 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="mainMenuPane" layoutX="28.0" layoutY="156.0" prefHeight="453.0" prefWidth="582.0" style="-fx-background-color: #191970; -fx-background-radius: 15;">
+            <AnchorPane layoutX="28.0" layoutY="156.0" prefHeight="453.0" prefWidth="582.0" style="-fx-background-color: #191970; -fx-background-radius: 15;">
                <children>
-                  <Button fx:id="registerAthleteButton" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Register a new Athlete" textFill="WHITE">
+                  <Button fx:id="registerAthleteButton" layoutX="14.0" layoutY="32.0" mnemonicParsing="false" onAction="#openAthleteRegistration" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Register a new Athlete" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="inputDataButton" layoutX="296.0" layoutY="32.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Input data for an Athlete" textFill="WHITE">
+                  <Button fx:id="inputDataButton" layoutX="296.0" layoutY="32.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Input data for an Athlete" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="registerMeetButton" layoutX="14.0" layoutY="142.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Register a new Meet" textFill="WHITE">
+                  <Button fx:id="registerMeetButton" layoutX="14.0" layoutY="142.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Register a new Meet" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="dataButton" layoutX="296.0" layoutY="142.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="View past data" textFill="WHITE">
+                  <Button fx:id="dataButton" layoutX="296.0" layoutY="142.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="View past data" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="optionsButton" layoutX="14.0" layoutY="246.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Options" textFill="WHITE">
+                  <Button fx:id="optionsButton" layoutX="14.0" layoutY="252.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Options" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="aboutButton" layoutX="296.0" layoutY="246.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="About" textFill="WHITE">
+                  <Button fx:id="aboutButton" layoutX="296.0" layoutY="252.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="About" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="exitButton" layoutX="160.0" layoutY="347.0" mnemonicParsing="false" onAction="#exit" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #F4A460;" text="Exit" textFill="WHITE">
+                  <Button fx:id="exitButton" layoutX="155.0" layoutY="362.0" mnemonicParsing="false" onAction="#exit" prefHeight="57.0" prefWidth="272.0" style="-fx-background-radius: 15; -fx-background-color: #D2691E;" text="Exit" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="15.0" />
                      </font>
                   </Button>
+                  <AnchorPane fx:id="AthleteRegistrationPane" layoutX="71.0" layoutY="127.0" prefHeight="453.0" prefWidth="582.0" style="-fx-background-color: #191970; -fx-background-radius: 15;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="148.0" layoutY="25.0" text="ATHLETE REGISTRATION" textFill="WHITE">
+                           <font>
+                              <Font name="Avenir Heavy" size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField layoutX="14.0" layoutY="91.0" prefHeight="27.0" prefWidth="135.0" />
+                        <TextField layoutX="165.0" layoutY="91.0" prefHeight="27.0" prefWidth="135.0" />
+                        <TextField layoutX="320.0" layoutY="91.0" prefHeight="27.0" prefWidth="54.0" />
+                        <Label layoutX="14.0" layoutY="69.0" text="Last name" textFill="WHITE" />
+                        <Label layoutX="165.0" layoutY="69.0" text="First name" textFill="WHITE" />
+                        <Label layoutX="338.0" layoutY="69.0" text="M.I" textFill="WHITE" />
+                        <Label layoutX="14.0" layoutY="142.0" text="Gender" textFill="WHITE" />
+                        <CheckBox layoutX="14.0" layoutY="167.0" mnemonicParsing="false" text="Male" textFill="WHITE" />
+                        <CheckBox layoutX="95.0" layoutY="167.0" mnemonicParsing="false" text="Female" textFill="WHITE" />
+                        <CheckBox layoutX="190.0" layoutY="167.0" mnemonicParsing="false" text="Other" textFill="WHITE" />
+                        <ImageView layoutX="14.0" layoutY="27.0" onMousePressed="#goHomeFromAR" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@home.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="14.0" layoutY="203.0" text="School:" textFill="WHITE" />
+                        <TextField layoutX="14.0" layoutY="227.0" prefHeight="27.0" prefWidth="135.0" />
+                        <Button layoutX="389.0" layoutY="270.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="93.0" text="Submit" />
+                        <Label layoutX="175.0" layoutY="203.0" text="Year of Graduation:" textFill="WHITE" />
+                        <TextField layoutX="175.0" layoutY="227.0" prefHeight="27.0" prefWidth="54.0" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="aboutPane" layoutX="14.0" prefHeight="453.0" prefWidth="726.0" style="-fx-background-radius: 15; -fx-background-color: #191970;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label layoutX="249.0" layoutY="26.0" text="ABOUT" textFill="WHITE">
+                           <font>
+                              <Font name="Avenir Heavy" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="69.0" prefHeight="106.0" prefWidth="471.0" text="This comprehensive athlete data tracker software was developed as a Capstone Senior Project by students at Woodgrove High School in Purcellville, VA. The software was developed by a team of students who are highly interested and skilled in the field of programming. This Athlete Tracker was developed in its entirety using Java." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
+                        <Label layoutX="56.0" layoutY="318.0" text="Development Team:" textFill="WHITE">
+                           <font>
+                              <Font name="Avenir Heavy" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="56.0" layoutY="337.0" text="Carson Forsyth" textFill="WHITE" />
+                        <Label layoutX="56.0" layoutY="352.0" text="Dominic Jimeno" textFill="WHITE" />
+                        <Label layoutX="56.0" layoutY="367.0" text="James Huang" textFill="WHITE" />
+                        <Label layoutX="56.0" layoutY="382.0" text="Jan Arvik" textFill="WHITE" />
+                        <Label layoutX="56.0" layoutY="397.0" text="Jason Garner" textFill="WHITE" />
+                        <Label layoutX="180.0" layoutY="337.0" text="Juan Jovel" textFill="WHITE" />
+                        <Label layoutX="180.0" layoutY="352.0" text="Sami Marzougui" textFill="WHITE" />
+                        <Label layoutX="180.0" layoutY="367.0" text="Thomas Hegerich" textFill="WHITE" />
+                        <Label layoutX="374.0" layoutY="318.0" text="Advisors/Sponsors:" textFill="WHITE">
+                           <font>
+                              <Font name="Avenir Heavy" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="374.0" layoutY="337.0" text="Natasha Shildneck" textFill="WHITE" />
+                        <Label layoutX="374.0" layoutY="352.0" text="Robert Petitt" textFill="WHITE" />
+                        <ImageView layoutX="42.0" layoutY="28.0" onMouseClicked="#goHomeFromAbout" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@home.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

@@ -1,54 +1,77 @@
 package capstone.scorebook.test;
 
+import capstone.scorebook.data.concrete.Athlete;
 import capstone.scorebook.data.concrete.Meet;
 
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.lang.System.out;
-
 public class PrettyPrinter {
 
-	public static void print(List<Meet> meets) {
+	final static TableFormat FORMAT_ATHLETE = new TableFormat<Athlete>()
+		.add("Name", Athlete::getFullName)
+		.add("YOG", a -> String.valueOf(a.getYearOfGraduation()));
 
-		out.printf("");
+	final static TableFormat FORMAT_MEET = new TableFormat<Meet>()
+		.add("Date", Meet::getDate)
+		.add("Address", Meet::getAddressID)
+		.add("Season", Meet::getSeason);
+
+	public static <E> String toCSV(List<E> items, TableFormat<E> format) {
+
+		return toTable(items, format.table.keySet(), ",",
+			       colName -> colName,
+			       (colName, item) -> format.table.get(colName).apply(item));
 
 	}
 
-	private static <E> int max(List<E> items, String header, Function<E, String> strFunct) {
+	public static <E> String toTable(List<E> items, TableFormat<E> format, int padding) {
 
-		return 1 + Collections.max(Stream.concat(items.stream().map(strFunct), Stream.of(header)).map(String::length).collect(Collectors.toList()));
+		HashMap<String, Integer> widths = widths(items, format);
+
+		return toTable(items, format.table.keySet(), "",
+			       colName -> padded(colName, widths.get(colName) + padding),
+			       (colName, item) -> padded(format.table.get(colName).apply(item), widths.get(colName) + padding));
 
 	}
 
-	public static <E> String toTable(List<E> items, String[] headers, Function<E, String>... functions) {
+	interface TwoFunction<X, Y, Out> { // function with two inputs
+		Out apply(X x, Y y);
+	}
 
-		int[] colWidths = new int[headers.length];
-
-		for (int i = 0; i < colWidths.length; i++) colWidths[i] = max(items, headers[i], functions[i]);
+	public static <E> String toTable(List<E> items, Collection<String> colNames, String delim, Function<String, String> colNameFunc, TwoFunction<String, E, String> rowDataFunc) {
 
 		StringBuilder b = new StringBuilder();
 
-		for (int i = 0; i < headers.length; i++)
-			b.append(String.format("%" + colWidths[i] + "s", headers[i]));
-
+		b.append(String.join(delim, colNames.stream().map(colNameFunc).collect(Collectors.toList()))); // col names
 		b.append('\n');
 
-		for (int i = 0; i < items.size(); i++) {
+		for (E item : items) {
 
-			List<String> rowData = items.stream().map(functions[i]).collect(Collectors.toList());
-
-			for (int j = 0; j < headers.length; j++)
-				b.append(String.format("%" + colWidths[j] + "s", functions[j].apply(items.get(i))));
-
+			b.append(String.join(delim, colNames.stream().map(colName -> rowDataFunc.apply(colName, item)).collect(Collectors.toList()))); // table data
 			b.append('\n');
 
 		}
 
 		return b.toString();
+
+	}
+
+	private static String padded(String str, int padding) { return String.format("%" + padding + "s", str); }
+
+	private static <E> HashMap<String, Integer> widths(List<E> items, TableFormat<E> format) {
+
+		HashMap<String, Integer> widths = new HashMap();
+
+		for (String colName : format.table.keySet())
+			widths.put(colName, Collections.max(Stream.concat(Stream.of(colName), items.stream().map(format.table.get(colName))).map(String::length).collect(Collectors.toList())));
+
+		return widths;
 
 	}
 
