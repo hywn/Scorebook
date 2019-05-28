@@ -24,8 +24,7 @@
 				<ComboBox fx:id="throwBox" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 
 				<Label text="Name:" GridPane.rowIndex="5" />
-				<TextField fx:id="nameField" onAction="#autoComplete" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-				<ComboBox fx:id="autoBox" onAction="#autoComplete" prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+				<ComboBox fx:id="autoBox" onAction="#autoComplete" prefHeight="25.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
 
 				<Label text="Distance (Feet):" GridPane.rowIndex="6" />
 				<TextField fx:id="feetField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -41,6 +40,7 @@
             <ColumnConstraints />
          </columnConstraints>
          <rowConstraints>
+            <RowConstraints />
             <RowConstraints />
             <RowConstraints />
             <RowConstraints />
