@@ -32,7 +32,7 @@ public class School extends Location {
 	@Override
 	protected String generateID() {
 
-		return Util.firstNLoN(getName(), 5) + getDistrict() + getDivision() + getDivision();
+		return Util.firstNLoN(getName(), 5) + getDistrict() + getRegion() + getDivision();
 
 	}
 

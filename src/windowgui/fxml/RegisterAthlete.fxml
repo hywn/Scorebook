@@ -16,7 +16,6 @@
 					<children>
 						<Label text="Last name" />
 						<Label text="First name" GridPane.columnIndex="1" />
-						<Label text="M.I" GridPane.columnIndex="2" />
 
 						<TextField fx:id="lastNameField" GridPane.rowIndex="1" />
 						<TextField fx:id="firstNameField"
@@ -35,10 +34,10 @@
 				</GridPane-->
 				<GridPane>
 					<children>
-						<Label text="School" />
+						<!-- Label text="School" /-->
 						<Label text="Year of Graduation" GridPane.columnIndex="1" />
 
-						<TextField fx:id="schoolField" GridPane.rowIndex="1" />
+						<!-- TextField fx:id="schoolField" GridPane.rowIndex="1" /-->
 						<TextField fx:id="gradYearField"
 							GridPane.columnIndex="1" GridPane.rowIndex="1" />
 					</children>
