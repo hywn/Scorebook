@@ -6,7 +6,9 @@ import javafx.scene.control.TextField;
 
 import java.util.Arrays;
 
+import capstone.scorebook.data.concrete.Address;
 import capstone.scorebook.data.concrete.Athlete;
+import capstone.scorebook.data.concrete.School;
 import capstone.scorebook.data.concrete.ScorebookDatabase;
 
 public class RegisterAthleteController extends BaseController {
@@ -18,7 +20,10 @@ public class RegisterAthleteController extends BaseController {
 //	private CheckBox male, female, other;
 
 	public String getSchoolID() {
-		return schoolField.getText();
+		Address schoolAddress = new Address("36811 Allder School Rd", "Purcellville", "VA", 20132);
+		School school = new School(schoolAddress.getID(), "Woodgrove", "5a", "Dulles", "division"); // I don't know how districts, regions, or divisions work
+		return school.getID();
+		//return schoolField.getText();
 	}
 	
 	public String getName() {
