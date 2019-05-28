@@ -67,32 +67,23 @@ public class ThrowDataController extends MeetController {
 
 	public void autoComplete() {
 
+		String name = getName();
+
+		autoBox.getItems().clear();
+
 		List<String> names = getDB().getAllAthletes().stream().map(Athlete::getFullName).collect(Collectors.toList());
 
 		System.out.println(Arrays.toString(names.toArray()));
 
-		ObservableList<String> options = FXCollections.observableArrayList();
-
 		for (String str : names)
-			if (str != null && getName() != null)
-				if (str.toLowerCase().contains(getName().toLowerCase())) {
-					System.out.println(getName());
+			if (str != null && name != null)
+				if (str.toLowerCase().contains(name.toLowerCase())) {
+					System.out.println(name);
 					autoBox.getItems().add(str);
 				}
+
 		// add nam
 		// e to drop down
-
-
-		autoBox = new ComboBox(options); // present drop down
-
-
-	}
-
-	public String getName() { return autoBox.getValue(); }
-	public String getWeather() { return weatherBox.getValue(); }
-	public String getWind() { return windBox.getValue(); }
-	public int getThrow() { return throwBox.getValue(); }
-	public int getDistanceInches() { return Integer.parseInt(feetField.getText()) * 12 + Integer.parseInt(inchField.getText()); }
 		autoBox.getSelectionModel().selectFirst();
 
 	}
@@ -121,7 +112,6 @@ public class ThrowDataController extends MeetController {
 
 		return inch + feet * 12;
 	}
-
 
 	public String getAthleteID() {
 		List<Athlete> athletes = getDB().getAllAthletes();
