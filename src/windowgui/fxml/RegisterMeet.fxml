@@ -10,22 +10,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootPane" prefHeight="463.0" prefWidth="393.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windowgui.controller.RegisterMeetController">
+<AnchorPane fx:id="rootPane" onMouseClicked="#resetIt" prefHeight="463.0" prefWidth="393.0" style="-fx-background-color: green;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windowgui.controller.RegisterMeetController">
 	<children>
-		<Label layoutX="14.0" layoutY="75.0" text="How many rounds in this meet?">
+		<Label layoutX="14.0" layoutY="75.0" text="Number of rounds: ">
 			<font>
 				<Font size="20.0" />
 			</font>
 		</Label>
 		<fx:include onMouseClicked="#goHome" source="HomeButton.fxml" />
-		<ComboBox fx:id="roundOptions" layoutX="303.0" layoutY="77.0" prefHeight="25.0" prefWidth="96.0" />
+		<ComboBox fx:id="roundOptions" layoutX="279.0" layoutY="78.0" onAction="#reset" prefHeight="25.0" prefWidth="96.0" />
 		<Button layoutX="303.0" layoutY="328.0" mnemonicParsing="false" onAction="#enter" prefHeight="30.0" prefWidth="81.0" style="-fx-background-radius: 15;" text="Enter" />
-		<Label layoutX="14.0" layoutY="102.0" prefHeight="36.0" prefWidth="238.0" text="What is the meet number?">
+		<Label layoutX="14.0" layoutY="102.0" prefHeight="36.0" prefWidth="238.0" text="Meet number: ">
          <font>
             <Font size="19.0" />
          </font></Label>
-      <TextField fx:id="meetNumField" layoutX="252.0" layoutY="108.0" onAction="#getMeetNum" prefHeight="25.0" prefWidth="117.0" />
-      <Label layoutX="14.0" layoutY="138.0" text="What is the address?">
+      <TextField fx:id="meetNumField" layoutX="252.0" layoutY="108.0" onInputMethodTextChanged="#reset" prefHeight="25.0" prefWidth="117.0" />
+      <Label layoutX="14.0" layoutY="138.0" text="Meet location: ">
          <font>
             <Font size="20.0" />
          </font>
@@ -35,13 +35,18 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="198.0" text="What is the temperature?">
+      <Label layoutX="14.0" layoutY="198.0" text="Temperature: ">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="addressField" layoutX="200.0" layoutY="141.0" onAction="#getAddress" />
-      <TextField fx:id="tempField" layoutX="245.0" layoutY="201.0" onAction="#getTemp" prefHeight="25.0" prefWidth="142.0" />
-      <ComboBox fx:id="indoorsOptions" layoutX="200.0" layoutY="171.0" onAction="#getIndoors" prefWidth="150.0" />
+      <TextField fx:id="addressField" layoutX="220.0" layoutY="141.0" onInputMethodTextChanged="#reset" />
+      <TextField fx:id="tempField" layoutX="224.0" layoutY="201.0" onInputMethodTextChanged="#reset" prefHeight="25.0" prefWidth="142.0" />
+      <ComboBox fx:id="indoorsOptions" layoutX="219.0" layoutY="171.0" onAction="#reset" prefWidth="150.0" />
+      <Label fx:id="doneLabel" layoutX="14.0" layoutY="298.0" text="Meet has been registered successfully!" textFill="WHITE" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
 	</children>
 </AnchorPane>
