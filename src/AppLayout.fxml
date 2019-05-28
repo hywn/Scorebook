@@ -103,12 +103,12 @@
                         </Label>
                         <Label layoutX="56.0" layoutY="337.0" text="Carson Forsyth" textFill="WHITE" />
                         <Label layoutX="56.0" layoutY="352.0" text="Dominic Jimeno" textFill="WHITE" />
-                        <Label layoutX="56.0" layoutY="369.0" text="James Huang" textFill="WHITE" />
-                        <Label layoutX="56.0" layoutY="386.0" text="Jan Arvik" textFill="WHITE" />
-                        <Label layoutX="57.0" layoutY="403.0" text="Jason Garner" textFill="WHITE" />
+                        <Label layoutX="56.0" layoutY="367.0" text="James Huang" textFill="WHITE" />
+                        <Label layoutX="56.0" layoutY="382.0" text="Jan Arvik" textFill="WHITE" />
+                        <Label layoutX="56.0" layoutY="397.0" text="Jason Garner" textFill="WHITE" />
                         <Label layoutX="180.0" layoutY="337.0" text="Juan Jovel" textFill="WHITE" />
                         <Label layoutX="180.0" layoutY="352.0" text="Sami Marzougui" textFill="WHITE" />
-                        <Label layoutX="180.0" layoutY="369.0" text="Thomas Hegerich" textFill="WHITE" />
+                        <Label layoutX="180.0" layoutY="367.0" text="Thomas Hegerich" textFill="WHITE" />
                         <Label layoutX="374.0" layoutY="318.0" text="Advisors/Sponsors:" textFill="WHITE">
                            <font>
                               <Font name="Avenir Heavy" size="13.0" />
