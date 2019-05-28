@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootPane"
+	    fx:controller="windowgui.controller.MainMenuController"
+	    prefWidth="600" prefHeight="500"
+	    stylesheets="windowgui/Style.css"
+	    xmlns:fx="javafx.com/fxml">
+	<GridPane fx:id="menuButtons"
+		  prefWidth="500" prefHeight="400"
+		  layoutX="50" layoutY="80">
+		<children>
+			<Button fx:id="registerAthleteButton"
+				onAction="#registerAthlete"
+				text="Register a new Athlete"
+				GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+			<Button fx:id="inputDataButton"
+				onAction="#inputData"
+				text="Input data for an Athlete"
+				GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+			<Button fx:id="registerMeetButton"
+				onAction="#registerMeet"
+				text="Register a new Meet"
+				GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+			<Button fx:id="dataButton"
+				onAction="#viewData"
+				text="View past data"
+				GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+			<Button fx:id="optionsButton"
+				onAction="#optionsPage"
+				text="Options"
+				GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+			<Button fx:id="aboutButton"
+				onAction="#aboutPage"
+				text="About"
+				GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			<Button fx:id="exitButton"
+				onAction="#exit"
+				text="Exit"
+				GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+			<Label text="ATHLETE TRACKER"
+			       textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"
+			       textAlignment="CENTER">
+				<font>
+					<Font name="Serif Regular" size="53"/>
+				</font>
+			</Label>
+		</children>
+	</GridPane>
+</AnchorPane>

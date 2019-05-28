@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 
 public class Athlete extends IDStorable {
 
-
 	private static final String // the goal is to keep all of the database implementation private
 		COLUMN_SCHOOL_ID = "sid",
 		COLUMN_YEAR_OF_GRADUATION = "yog",
