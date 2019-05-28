@@ -34,7 +34,7 @@ public class ThrowDataController extends MeetController {
 	private void initialize() {
 
 		eventBox.getItems().setAll(Arrays.asList("Discus", "Shotput"));
-		weatherBox.getItems().setAll(Arrays.asList("Sunny", "Rainy"));
+		weatherBox.getItems().setAll(Arrays.asList("Sunny", "Cloudy", "Rainy"));
 		windBox.getItems().setAll(Arrays.asList("None", "Little", "Medium", "High"));
 		throwBox.getItems().setAll(Arrays.asList(1, 2, 3, 4));
 
@@ -72,6 +72,12 @@ public class ThrowDataController extends MeetController {
 				options.add(str); // add name to drop down
 
 		autoBox = new ComboBox(options); // present drop down
+		
+		autoBox.getItems().setAll(options);
+
+		for (ComboBox b : Arrays.asList(autoBox))
+			b.getSelectionModel().selectFirst();
+
 
 	}
 
