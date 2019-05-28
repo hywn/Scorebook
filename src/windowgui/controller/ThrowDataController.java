@@ -29,6 +29,7 @@ public class ThrowDataController extends MeetController {
 	private ComboBox<Integer> throwBox;
 	@FXML
 	private Button enter;
+	
 
 	@FXML
 	private void initialize() {
@@ -37,6 +38,8 @@ public class ThrowDataController extends MeetController {
 		weatherBox.getItems().setAll(Arrays.asList("Sunny", "Cloudy", "Rainy"));
 		windBox.getItems().setAll(Arrays.asList("None", "Little", "Medium", "High"));
 		throwBox.getItems().setAll(Arrays.asList(1, 2, 3, 4));
+
+		autoBox.setEditable(true);
 
 		for (ComboBox b : Arrays.asList(eventBox, weatherBox, windBox, throwBox))
 			b.getSelectionModel().selectFirst();
@@ -47,14 +50,18 @@ public class ThrowDataController extends MeetController {
 	// enter into database
 	public void enter() {
 
-		if (eventBox.getValue().equals("Discus"))
-			getDB().insert(new ScoreDiscus(meet.getID(), getAthleteID(), getWeather(), getThrow(), getDistanceInches()));
+		if (eventBox.getValue().equals("Discus")) {
+			System.out.println(meet.getID()+" "+getAthleteID()+getWeather()+getThrow()+getDistanceInches());
+			getDB().insert(
+					new ScoreDiscus(meet.getID(), getAthleteID(), getWeather(), getThrow(), getDistanceInches()));
+		}
 
 		else if (eventBox.getValue().equals("Shotput"))
-			getDB().insert(new ScoreShotput(meet.getID(), getAthleteID(), getWeather(), getThrow(), getDistanceInches()));
+			getDB().insert(
+					new ScoreShotput(meet.getID(), getAthleteID(), getWeather(), getThrow(), getDistanceInches()));
 
 		feetField.clear();
-		inchField.clear();
+		inchField.setText("0");
 		autoBox.getItems().clear();
 
 	}
@@ -68,16 +75,16 @@ public class ThrowDataController extends MeetController {
 		ObservableList<String> options = FXCollections.observableArrayList();
 
 		for (String str : names)
-			if (str.contains(getName()))
-				options.add(str); // add name to drop down
+			if (str != null)
+				if (str.toLowerCase().contains(getName().toLowerCase())) {
+					System.out.println(getName());
+					autoBox.getItems().add(str);
+				}
+		; // add name to drop down
+
 
 		autoBox = new ComboBox(options); // present drop down
 
-		
-		autoBox.getItems().setAll(options);
-
-		for (ComboBox b : Arrays.asList(autoBox))
-			b.getSelectionModel().selectFirst();
 
 	}
 
@@ -86,6 +93,43 @@ public class ThrowDataController extends MeetController {
 	public String getWind() { return windBox.getValue(); }
 	public int getThrow() { return throwBox.getValue(); }
 	public int getDistanceInches() { return Integer.parseInt(feetField.getText()) * 12 + Integer.parseInt(inchField.getText()); }
+		autoBox.getSelectionModel().selectFirst();
+
+	}
+
+	public String getName() {
+		return autoBox.getValue();
+	}
+
+	public String getWeather() {
+		return weatherBox.getValue();
+	}
+
+	public String getWind() {
+		return windBox.getValue();
+	}
+
+	public int getThrow() {
+		return throwBox.getValue();
+	}
+
+	public int getDistanceInches() {
+		int inch, feet;
+		if (inchField.getText().equals("")) {
+			inch = 0;
+		} else {
+			inch = Integer.parseInt(inchField.getText());
+		}
+		if (feetField.getText().equals("")) {
+			feet = 0;
+		} else {
+			feet = Integer.parseInt(feetField.getText());
+		}
+
+		return feet + inch;
+	}
+
+
 	public String getAthleteID() {
 		List<Athlete> athletes = getDB().getAllAthletes();
 
@@ -96,6 +140,9 @@ public class ThrowDataController extends MeetController {
 		return null;
 	}
 
-	public void onSetMeet() { meetDetails.setText(meet.toString()); }
+	public void onSetMeet() {
+		meetDetails.setText(meet.toString());
+	}
+	
 
 }
