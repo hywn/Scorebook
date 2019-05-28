@@ -5,63 +5,52 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="rootPane"
-	    fx:controller="windowgui.controller.RegisterAthleteController"
-	    prefHeight="600" prefWidth="500"
-	    stylesheets="windowgui/Style.css"
-	    xmlns:fx="http://javafx.com/fxml">
+	fx:controller="windowgui.controller.RegisterAthleteController"
+	prefHeight="600" prefWidth="500" stylesheets="windowgui/Style.css"
+	xmlns:fx="http://javafx.com/fxml">
 	<children>
-		<VBox fx:id="registerAthlete"
-		      prefWidth="500" prefHeight="400"
-		      layoutX="50" layoutY="100">
+		<VBox fx:id="registerAthlete" prefWidth="500" prefHeight="400"
+			layoutX="50" layoutY="100">
 			<children>
 				<GridPane>
 					<children>
-						<Label text="Last name"/>
-						<Label text="First name" GridPane.columnIndex="1"/>
-						<Label text="M.I" GridPane.columnIndex="2"/>
+						<Label text="Last name" />
+						<Label text="First name" GridPane.columnIndex="1" />
 
-						<TextField fx:id="lastNameField"
-							   GridPane.rowIndex="1"/>
-						<TextField fx:id="firstNameField" GridPane.columnIndex="1"
-							   GridPane.rowIndex="1"/>
-						<TextField fx:id="miField"
-							   GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+						<TextField fx:id="lastNameField" GridPane.rowIndex="1" />
+						<TextField fx:id="firstNameField"
+							GridPane.columnIndex="1" GridPane.rowIndex="1" />
 					</children>
 				</GridPane>
-				<GridPane>
+				<!-- GridPane>
 					<children>
-						<Label text="Gender"/>
-						<CheckBox fx:id="male"
-							  text="Male"
-							  GridPane.rowIndex="1"/>
-						<CheckBox fx:id="female"
-							  text="Female"
-							  GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-						<CheckBox fx:id="other"
-							  text="Other"
-							  GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+						<Label text="Gender" />
+						<CheckBox fx:id="male" text="Male" GridPane.rowIndex="1" />
+						<CheckBox fx:id="female" text="Female"
+							GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<CheckBox fx:id="other" text="Other"
+							GridPane.columnIndex="2" GridPane.rowIndex="1" />
 					</children>
-				</GridPane>
+				</GridPane-->
 				<GridPane>
 					<children>
-						<Label text="School"/>
-						<Label text="Year of Graduation" GridPane.columnIndex="1"/>
+						<!-- Label text="School" /-->
+						<Label text="Year of Graduation" GridPane.columnIndex="1" />
 
-						<TextField fx:id="schoolField"
-							   GridPane.rowIndex="1"/>
+						<!-- TextField fx:id="schoolField" GridPane.rowIndex="1" /-->
 						<TextField fx:id="gradYearField"
-							   GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+							GridPane.columnIndex="1" GridPane.rowIndex="1" />
 					</children>
 				</GridPane>
-				<Button fx:id="enterButton"
-					onAction="#enter"
-					text="Enter"/>
+				<Button fx:id="enterButton" onAction="#enter" text="Enter" />
 			</children>
 		</VBox>
-		<fx:include source="HomeButton.fxml" onMouseClicked="#goHome"/>
-		<Label layoutX="100" layoutY="50" text="ATHLETE REGISTRATION" textFill="WHITE">
+		<fx:include source="HomeButton.fxml"
+			onMouseClicked="#goHome" />
+		<Label layoutX="100" layoutY="50" text="ATHLETE REGISTRATION"
+			textFill="WHITE">
 			<font>
-				<Font name="Avenir Heavy" size="24.0"/>
+				<Font name="Avenir Heavy" size="24.0" />
 			</font>
 		</Label>
 	</children>
