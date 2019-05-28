@@ -29,3 +29,5 @@ Label, CheckBox { -fx-text-fill: #ffffff }
 #titleTeam, #titleSponsors { -fx-font-family: "Avenir Heavy"; -fx-font-size: 14 }
 
 TableView Label { -fx-text-fill: #000000 }
+
+#roundBox, #throwBox { -fx-pref-width: 75 }
