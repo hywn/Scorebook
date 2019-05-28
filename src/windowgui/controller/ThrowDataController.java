@@ -43,6 +43,7 @@ public class ThrowDataController extends MeetController {
 		for (ComboBox b : Arrays.asList(eventBox, weatherBox, windBox, throwBox))
 			b.getSelectionModel().selectFirst();
 
+		autoBox.setEditable(true);
 	}
 
 	// enter into database
@@ -66,25 +67,23 @@ public class ThrowDataController extends MeetController {
 
 	public void autoComplete() {
 
+		String name = getName();
+
+		autoBox.getItems().clear();
+
 		List<String> names = getDB().getAllAthletes().stream().map(Athlete::getFullName).collect(Collectors.toList());
 
 		System.out.println(Arrays.toString(names.toArray()));
 
-		ObservableList<String> options = FXCollections.observableArrayList();
-
 		for (String str : names)
-			if (str != null && getName() != null)
-				if (str.toLowerCase().contains(getName().toLowerCase())) {
-					System.out.println(getName());
+			if (str != null && name != null)
+				if (str.toLowerCase().contains(name.toLowerCase())) {
+					System.out.println(name);
 					autoBox.getItems().add(str);
 				}
+
 		// add nam
 		// e to drop down
-
-		// autoBox = new ComboBox(options); // present drop down
-
-		// autoBox.getItems().setAll(options);
-
 		autoBox.getSelectionModel().selectFirst();
 
 	}
