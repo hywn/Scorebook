@@ -38,7 +38,7 @@
 					<children>
 						<Label fx:id="titleSponsors" text="Advisors/Sponsors:"/>
 						<Label text="Natasha Shildneck" GridPane.rowIndex="2"/>
-						<Label text="Robert Petitt" GridPane.rowIndex="1"/>
+						<Label text="Robert Pettit" GridPane.rowIndex="1"/>
 					</children>
 				</GridPane>
 			</children>

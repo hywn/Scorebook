@@ -22,7 +22,7 @@ public class ThrowDataController extends MeetController {
 	@FXML
 	private Label meetDetails;
 	@FXML
-	private TextField nameField, feetField, inchField;
+	private TextField feetField, inchField;
 	@FXML
 	private ComboBox<String> eventBox, weatherBox, windBox, autoBox;
 	@FXML
@@ -41,6 +41,7 @@ public class ThrowDataController extends MeetController {
 		for (ComboBox b : Arrays.asList(eventBox, weatherBox, windBox, throwBox))
 			b.getSelectionModel().selectFirst();
 
+		autoBox.setEditable(true);
 	}
 
 	// enter into database
@@ -52,7 +53,6 @@ public class ThrowDataController extends MeetController {
 		else if (eventBox.getValue().equals("Shotput"))
 			getDB().insert(new ScoreShotput(meet.getID(), getAthleteID(), getWeather(), getThrow(), getDistanceInches()));
 
-		nameField.clear();
 		feetField.clear();
 		inchField.clear();
 		autoBox.getItems().clear();
@@ -72,10 +72,9 @@ public class ThrowDataController extends MeetController {
 				options.add(str); // add name to drop down
 
 		autoBox = new ComboBox(options); // present drop down
-
 	}
 
-	public String getName() { return nameField.getText(); }
+	public String getName() { return autoBox.getValue(); }
 	public String getWeather() { return weatherBox.getValue(); }
 	public String getWind() { return windBox.getValue(); }
 	public int getThrow() { return throwBox.getValue(); }

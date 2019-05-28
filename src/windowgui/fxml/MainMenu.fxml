@@ -15,19 +15,19 @@
 		<children>
 			<Button fx:id="registerAthleteButton"
 				onAction="#registerAthlete"
-				text="Register a new Athlete"
+				text="Register a New Athlete"
 				GridPane.columnIndex="0" GridPane.rowIndex="1"/>
 			<Button fx:id="inputDataButton"
 				onAction="#inputData"
-				text="Input data for an Athlete"
+				text="Input Data for an Athlete"
 				GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 			<Button fx:id="registerMeetButton"
 				onAction="#registerMeet"
-				text="Register a new Meet"
+				text="Register a New Meet"
 				GridPane.columnIndex="0" GridPane.rowIndex="2"/>
 			<Button fx:id="dataButton"
 				onAction="#viewData"
-				text="View past data"
+				text="View Past Data"
 				GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 			<Button fx:id="optionsButton"
 				onAction="#optionsPage"
