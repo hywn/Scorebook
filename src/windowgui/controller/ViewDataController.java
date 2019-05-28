@@ -19,19 +19,20 @@ public class ViewDataController extends MeetController {
 		ScorebookDatabase db = ScorebookDatabase.getDB();
 
 		TableColumn<ScoreDiscus, String> athleteCol, weatherCol;
-		TableColumn<ScoreDiscus, Integer> orderCol, distanceCol;
+		TableColumn<ScoreDiscus, Integer> orderCol, feetCol, inchCol;
 
 		athleteCol = new TableColumn("Athlete");
 		orderCol = new TableColumn("Order");
-		distanceCol = new TableColumn("Distance");
+		feetCol = new TableColumn("Feet");
+		inchCol = new TableColumn("Inches");
 		weatherCol = new TableColumn("Weather");
 
 		athleteCol.setCellValueFactory(p -> new SimpleStringProperty(db.getAthlete(p.getValue().getAthleteID()).getFullName()));
 		orderCol.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getOrder()).asObject()); // why asObject??
-		distanceCol.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getDistance()).asObject());
+		feetCol.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getDistance()/12).asObject());
+		inchCol.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getDistance()%12).asObject());
 		weatherCol.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getWeatherID()));
-
-		scoreDataTable.getColumns().setAll(athleteCol, orderCol, distanceCol, weatherCol);
+		scoreDataTable.getColumns().setAll(athleteCol, orderCol, feetCol, inchCol, weatherCol);
 
 		scoreDataTable.setItems(FXCollections.observableList(db.getDiscusScores(meet.getID())));
 
