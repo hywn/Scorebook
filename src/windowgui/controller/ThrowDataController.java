@@ -24,7 +24,7 @@ public class ThrowDataController extends MeetController {
 	@FXML
 	private Label meetDetails;
 	@FXML
-	private TextField feetField, inchField;
+	private TextField feetField, inchField, distanceField, tempField;
 	@FXML
 	private ComboBox<String> eventBox, weatherBox, windBox, autoBox;
 	@FXML
@@ -40,8 +40,10 @@ public class ThrowDataController extends MeetController {
 		roundBox.getItems().setAll(1);
 		throwBox.getItems().setAll(1, 2, 3);
 
-		if (meet.getRounds() == 2) roundBox.getItems().add(2);
-		else throwBox.getItems().add(4);
+		if (meet.getRounds() == 2)
+			roundBox.getItems().add(2);
+		else
+			throwBox.getItems().add(4);
 
 		if (meet.getRounds() == 1)
 			roundBox.setDisable(true);
@@ -54,6 +56,7 @@ public class ThrowDataController extends MeetController {
 				public String toString(Integer i) {
 					return i.toString();
 				}
+
 				@Override
 				public Integer fromString(String s) {
 					return Integer.parseInt(s);
@@ -73,17 +76,24 @@ public class ThrowDataController extends MeetController {
 
 	}
 
+	public void goBack() {
+		this.<SelectMeetController>openFXML("SelectMeet.fxml",
+				controller -> controller.setFXMLtoOpen("ThrowData.fxml"));
+	}
+
 	// enter into database
+	//NEED TO REMOVE TEMP FROM MEET, AND ADD TO THE TABLE OF DATA WHEN INPUTTING AN ATHLETE THROW
 	public void enter() {
 
 		if (eventBox.getValue().equals("Discus")) {
 			System.out.println(meet.getID() + " " + getAthleteID() + getWeather() + getThrow() + getDistanceInches());
-			getDB().insert(new ScoreDiscus(meet.getID(), getAthleteID(), getWeather(), getRound(), getThrow(), getDistanceInches()));
+			getDB().insert(new ScoreDiscus(meet.getID(), getAthleteID(), getWeather(), getRound(), getThrow(),
+					getDistanceInches()));
 		} else if (eventBox.getValue().equals("Shotput"))
-			getDB().insert(new ScoreShotput(meet.getID(), getAthleteID(), getWeather(), getRound(), getThrow(), getDistanceInches()));
+			getDB().insert(new ScoreShotput(meet.getID(), getAthleteID(), getWeather(), getRound(), getThrow(),
+					getDistanceInches()));
 
-		feetField.clear();
-		inchField.clear();
+		distanceField.clear();
 		autoBox.getItems().clear();
 
 	}
@@ -104,7 +114,8 @@ public class ThrowDataController extends MeetController {
 
 		for (String str : names)
 			if (str.toLowerCase().contains(text.toLowerCase())) {
-				if (str.equals(text)) return;
+				if (str.equals(text))
+					return;
 				Platform.runLater(() -> matchedNames.add(str));
 			}
 
@@ -136,12 +147,18 @@ public class ThrowDataController extends MeetController {
 	}
 
 	public int getDistanceInches() {
-		int inch, feet;
+		int feet, inch;
+		if (!distanceField.getText().contains("-"))
+			inch = 0;
+		else
+			inch = Integer.parseInt(distanceField.getText().split("-")[1]);
 
-		inch = inchField.getText().isEmpty() ? 0 : Integer.parseInt(inchField.getText());
-		feet = feetField.getText().isEmpty() ? 0 : Integer.parseInt(feetField.getText());
-
-		return inch + feet * 12;
+		feet = Integer.parseInt(distanceField.getText().split("-")[0]);
+		return feet * 12 + inch;
+	}
+	
+	public int getTemp() {
+		return Integer.parseInt(tempField.getText());
 	}
 
 	public String getAthleteID() {
