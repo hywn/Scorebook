@@ -24,7 +24,7 @@ public class ThrowDataController extends MeetController {
 	@FXML
 	private Label meetDetails;
 	@FXML
-	private TextField feetField, inchField;
+	private TextField feetField, inchField, distanceField;
 	@FXML
 	private ComboBox<String> eventBox, weatherBox, windBox, autoBox;
 	@FXML
@@ -73,6 +73,9 @@ public class ThrowDataController extends MeetController {
 
 	}
 
+	public void goBack() {
+		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ThrowData.fxml"));
+	}
 	// enter into database
 	public void enter() {
 
@@ -82,8 +85,7 @@ public class ThrowDataController extends MeetController {
 		} else if (eventBox.getValue().equals("Shotput"))
 			getDB().insert(new ScoreShotput(meet.getID(), getAthleteID(), getWeather(), getRound(), getThrow(), getDistanceInches()));
 
-		feetField.clear();
-		inchField.clear();
+		distanceField.clear();
 		autoBox.getItems().clear();
 
 	}
@@ -136,12 +138,9 @@ public class ThrowDataController extends MeetController {
 	}
 
 	public int getDistanceInches() {
-		int inch, feet;
-
-		inch = inchField.getText().isEmpty() ? 0 : Integer.parseInt(inchField.getText());
-		feet = feetField.getText().isEmpty() ? 0 : Integer.parseInt(feetField.getText());
-
-		return inch + feet * 12;
+		int feet=Integer.parseInt(distanceField.getText().split("-")[0]);
+		int inch=Integer.parseInt(distanceField.getText().split("-")[1]);
+		return feet*12+inch;
 	}
 
 	public String getAthleteID() {

@@ -18,6 +18,10 @@ public class ViewDataController extends MeetController {
 	@FXML
 	TableView<ScoreThrow> scoreDataTable;
 
+	public void goBack() {
+		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ViewData.fxml"));
+	}
+	
 	void onSetMeet() {
 
 		ScorebookDatabase db = ScorebookDatabase.getDB();
