@@ -53,7 +53,7 @@
 						<Label text="Year of Graduation" GridPane.columnIndex="1" />
 
 						<!-- TextField fx:id="schoolField" GridPane.rowIndex="1" /-->
-						<TextField fx:id="gradYearField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+						<TextField fx:id="gradYearField" prefHeight="27.0" prefWidth="95.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 					</children>
                <columnConstraints>
                   <ColumnConstraints />
