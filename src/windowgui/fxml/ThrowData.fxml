@@ -12,6 +12,11 @@
 	<children>
 		<GridPane fx:id="menuItemLabels" layoutX="50" layoutY="100"
 			prefHeight="500" prefWidth="600">
+		       <ImageView pickOnBounds="true" preserveRatio="true">
+				<image>
+					<Image url="@../PastData.png" />
+				</image>
+			</ImageView>
 			<children>
 				<Label text="Meet:" />
 				<Label fx:id="meetDetails" text="meet details"

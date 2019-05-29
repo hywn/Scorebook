@@ -11,6 +11,10 @@
 	prefHeight="500" style="-fx-background-color: green;"
 	xmlns:fx="http://javafx.com/fxml">
 	<children>
+      <ImageView pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../PastData.png" />
+         </image>
 		<TableView fx:id="scoreDataTable" prefWidth="500"
 			prefHeight="400" layoutX="50" layoutY="100">
 		</TableView>
