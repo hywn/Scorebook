@@ -9,6 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ScorebookDatabase extends Database {
 
@@ -36,5 +39,8 @@ public class ScorebookDatabase extends Database {
 	// scores and weather should always be selected by meet/student
 	// TODO: probably need to rework how scores work
 	public ArrayList<ScoreDiscus> getDiscusScores(String mid) { return query(ScoreDiscus.STRUCT, Score.queryGetAllByMeetID(mid, ScoreDiscus.STRUCT)); } // no static abstract...
+	public ArrayList<ScoreShotput> getShotputScores(String mid) { return query(ScoreShotput.STRUCT, Score.queryGetAllByMeetID(mid, ScoreShotput.STRUCT)); }
+
+	public List<ScoreThrow> getThrowScores(String mid) { return Stream.concat(getDiscusScores(mid).stream(), getShotputScores(mid).stream()).collect(Collectors.toList()); }
 
 }

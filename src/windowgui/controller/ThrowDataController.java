@@ -5,14 +5,11 @@ import capstone.scorebook.data.concrete.ScoreDiscus;
 import capstone.scorebook.data.concrete.ScoreShotput;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.util.StringConverter;
 
 import java.util.ArrayList;
@@ -45,6 +42,9 @@ public class ThrowDataController extends MeetController {
 
 		if (meet.getRounds() == 2) roundBox.getItems().add(2);
 		else throwBox.getItems().add(4);
+
+		if (meet.getRounds() == 1)
+			roundBox.setDisable(true);
 
 		if (meet.getRounds() == 0) {
 			throwBox.setEditable(true);
