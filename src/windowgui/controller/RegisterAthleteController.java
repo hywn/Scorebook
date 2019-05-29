@@ -25,26 +25,24 @@ public class RegisterAthleteController extends BaseController {
 		return school.getID();
 		//return schoolField.getText();
 	}
-	
+
 	public String getName() {
-		return firstNameField.getText()+" "+lastNameField.getText();
+		return firstNameField.getText() + " " + lastNameField.getText();
 	}
-	
+
 	public int getGradYear() {
 		return Integer.parseInt(gradYearField.getText());
 	}
-	
+
 	//enter into database
 	public void enter() {
 
 		// clear stuff
-		System.out.println(getSchoolID()+getGradYear()+ getName());
-		
+		System.out.println(getSchoolID() + getGradYear() + getName());
+
 		ScorebookDatabase.getDB().insert(new Athlete(getSchoolID(), getGradYear(), getName()));
 
-
-
-		for (TextField f : Arrays.asList(lastNameField, firstNameField, schoolField, gradYearField))
+		for (TextField f : Arrays.asList(lastNameField, firstNameField, gradYearField))
 			f.clear();
 
 
