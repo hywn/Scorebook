@@ -13,6 +13,15 @@ Label, CheckBox { -fx-text-fill: #ffffff }
 	-fx-pref-height: 100;
 }
 
+#mainMenu { -fx-alignment: center; -fx-hgap: 50; -fx-vgap: 20 }
+#mainMenu Button {
+
+	-fx-background-radius: 10;
+	-fx-pref-width: 150;
+        -fx-pref-height: 75;
+
+}
+
 #menuItemLabels Label, #registerAthlete Label {
 	-fx-font-weight: bold;
 	-fx-font-size: 13;
@@ -29,3 +38,5 @@ Label, CheckBox { -fx-text-fill: #ffffff }
 #titleTeam, #titleSponsors { -fx-font-family: "Avenir Heavy"; -fx-font-size: 14 }
 
 TableView Label { -fx-text-fill: #000000 }
+
+#roundBox, #throwBox { -fx-pref-width: 75 }
