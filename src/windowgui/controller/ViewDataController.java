@@ -1,39 +1,56 @@
 package windowgui.controller;
 
 import capstone.scorebook.data.concrete.ScoreDiscus;
+import capstone.scorebook.data.concrete.ScoreThrow;
 import capstone.scorebook.data.concrete.ScorebookDatabase;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.util.function.Function;
+
 public class ViewDataController extends MeetController {
 
 	@FXML
-	TableView<ScoreDiscus> scoreDataTable;
+	TableView<ScoreThrow> scoreDataTable;
 
 	void onSetMeet() {
 
 		ScorebookDatabase db = ScorebookDatabase.getDB();
 
-		TableColumn<ScoreDiscus, String> athleteCol, weatherCol;
-		TableColumn<ScoreDiscus, Integer> orderCol, distanceCol;
+		addColumn("Event",
+			  score -> new SimpleStringProperty((score instanceof ScoreDiscus) ? "Discus" : "Shotput"));
 
-		athleteCol = new TableColumn("Athlete");
-		orderCol = new TableColumn("Order");
-		distanceCol = new TableColumn("Distance");
-		weatherCol = new TableColumn("Weather");
+		addColumn("Athlete",
+			  score -> new SimpleStringProperty(db.getAthlete(score.getAthleteID()).getFullName()));
 
-		athleteCol.setCellValueFactory(p -> new SimpleStringProperty(db.getAthlete(p.getValue().getAthleteID()).getFullName()));
-		orderCol.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getOrder()).asObject()); // why asObject??
-		distanceCol.setCellValueFactory(p -> new SimpleIntegerProperty(p.getValue().getDistance()).asObject());
-		weatherCol.setCellValueFactory(p -> new SimpleStringProperty(p.getValue().getWeatherID()));
+		addColumn("Order",
+			  score -> new SimpleIntegerProperty(score.getOrder()));
 
-		scoreDataTable.getColumns().setAll(athleteCol, orderCol, distanceCol, weatherCol);
+		addColumn("Feet",
+			  score -> new SimpleIntegerProperty(score.getDistance() / 12));
 
-		scoreDataTable.setItems(FXCollections.observableList(db.getDiscusScores(meet.getID())));
+		addColumn("Inches",
+			  score -> new SimpleIntegerProperty(score.getDistance() % 12));
+
+		addColumn("Weather",
+			  score -> new SimpleStringProperty(score.getWeatherID()));
+
+		scoreDataTable.setItems(FXCollections.observableList(db.getThrowScores(meet.getID())));
+
+	}
+
+	public <E> void addColumn(String colName, Function<ScoreThrow, ObservableValue<E>> func) {
+
+		TableColumn<ScoreThrow, E> col = new TableColumn(colName);
+
+		col.setCellValueFactory(p -> func.apply(p.getValue()));
+
+		scoreDataTable.getColumns().add(col);
 
 	}
 
