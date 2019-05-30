@@ -1,6 +1,7 @@
 package windowgui.controller;
 
 import capstone.scorebook.data.concrete.Athlete;
+import capstone.scorebook.data.concrete.Meet;
 import capstone.scorebook.data.concrete.ScoreDiscus;
 import capstone.scorebook.data.concrete.ScoreShotput;
 import javafx.application.Platform;
@@ -19,10 +20,10 @@ import java.util.stream.Collectors;
 
 import static capstone.scorebook.data.concrete.ScorebookDatabase.getDB;
 
-public class ThrowDataController extends MeetController {
+public class ThrowDataController extends BaseController {
 
 	@FXML
-	private Label meetDetails;
+	private Label     meetDetails;
 	@FXML
 	private TextField feetField, inchField, distanceField, tempField;
 	@FXML
@@ -32,8 +33,11 @@ public class ThrowDataController extends MeetController {
 	@FXML
 	private Button enter;
 
+	Meet meet;
+
 	// basically initialize
-	public void onSetMeet() {
+	public void setMeet(Meet meet) {
+		this.meet = meet;
 
 		meetDetails.setText(meet.toString());
 
@@ -77,19 +81,17 @@ public class ThrowDataController extends MeetController {
 	}
 
 	public void goBack() {
-		this.<SelectMeetController>openFXML("SelectMeet.fxml",
-						    controller -> controller.setFXMLtoOpen("ThrowData.fxml"));
+		this.openFXML("SelectMeet.fxml");
 	}
 
 	// enter into database
-	//NEED TO REMOVE TEMP FROM MEET, AND ADD TO THE TABLE OF DATA WHEN INPUTTING AN ATHLETE THROW
 	public void enter() {
 
 		if (eventBox.getValue().equals("Discus")) {
-			System.out.println(meet.getID() + " " + getAthleteID() + getWeather() + getThrow() + getDistanceInches());
 			getDB().insert(new ScoreDiscus(meet.getID(), getAthleteID(), getWeather(), getTemp(), getRound(), getThrow(),
 						       getDistanceInches()));
-		} else if (eventBox.getValue().equals("Shotput"))
+		}
+		else if (eventBox.getValue().equals("Shotput"))
 			getDB().insert(new ScoreShotput(meet.getID(), getAthleteID(), getWeather(), getTemp(), getRound(), getThrow(),
 							getDistanceInches()));
 

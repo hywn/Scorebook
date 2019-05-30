@@ -1,5 +1,6 @@
 package windowgui.controller;
 
+import capstone.scorebook.data.concrete.Meet;
 import capstone.scorebook.data.concrete.ScoreDiscus;
 import capstone.scorebook.data.concrete.ScoreThrow;
 import capstone.scorebook.data.concrete.ScorebookDatabase;
@@ -8,27 +9,39 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
 
+import java.awt.*;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class ViewDataController extends MeetController {
+public class ViewDataController extends BaseController {
 
 	@FXML
 	TableView<ScoreThrow> scoreDataTable;
 
+	List<Meet> meets;
+
 	public void goBack() {
-		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ViewData.fxml"));
+		this.openFXML("SelectMeetToView.fxml");
 	}
 
-	void onSetMeet() {
+	void setMeets(List<Meet> meets) {
+
+		this.meets = meets;
 
 		ScorebookDatabase db = ScorebookDatabase.getDB();
+
+		addColumn("Meet", score -> new SimpleStringProperty(score.getMeetID()));
 
 		addColumn("Event", score -> new SimpleStringProperty((score instanceof ScoreDiscus) ? "Discus" : "Shotput"));
 
@@ -43,7 +56,7 @@ public class ViewDataController extends MeetController {
 
 		addColumn("Temperature", score -> new SimpleIntegerProperty(score.getTemp()));
 
-		scoreDataTable.setItems(FXCollections.observableList(db.getThrowScores(meet.getID())));
+		scoreDataTable.setItems(FXCollections.observableList(db.getThrowScores(meets.stream().map(m -> m.getID()).collect(Collectors.toList()).toArray(new String[]{}))));
 
 	}
 
@@ -58,16 +71,7 @@ public class ViewDataController extends MeetController {
 	}
 
 	public void exportMeet() {
-
-		FileChooser fc = new FileChooser();
-		fc.setTitle("Choose where to export CSV");
-		fc.setInitialFileName(meet.toString() + ".csv");
-		String fileName = fc.showSaveDialog(null).getPath();
-
-		exportToFile(fileName, toCSV());
-
-		//todo: add prompt that says saved! open now? also add multi-meet export
-
+		exportCSV(String.join(", ", meets.stream().map(Meet::toString).collect(Collectors.toList())) + ".csv", toCSV());
 	}
 
 	public String toCSV() {
@@ -81,7 +85,7 @@ public class ViewDataController extends MeetController {
 
 		for (ScoreThrow v : scoreDataTable.getItems()) {
 			b.append(String.join(",", scoreDataTable.getColumns()
-				.stream().map(c -> c.getCellObservableValue(v).getValue().toString())
+				.stream().map(c -> '\t' + c.getCellObservableValue(v).getValue().toString()) // prepend tab so that feet-inches doesn't get imported as a date
 				.collect(Collectors.toList())));
 			b.append('\n');
 		}
@@ -90,15 +94,27 @@ public class ViewDataController extends MeetController {
 
 	}
 
-	private static void exportToFile(String fileName, String text) {
+	private static void exportCSV(String defaultFileName, String text) {
 
-		try (PrintWriter out = new PrintWriter(fileName)) {
-			out.println(text);
-		}
+		FileChooser fc = new FileChooser();
 
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		fc.setTitle("Choose where to export CSV");
+		fc.getExtensionFilters().setAll(new FileChooser.ExtensionFilter("Comma Separated Values (*.csv)", "*.csv"));
+		fc.setInitialFileName(defaultFileName);
+
+		File file = fc.showSaveDialog(null);
+		if (file == null) return;
+
+		try (PrintWriter out = new PrintWriter(file.getPath())) { out.println(text); }
+		catch (FileNotFoundException e) { e.printStackTrace(); return; }
+
+		Alert success = new Alert(Alert.AlertType.INFORMATION, "Do you wish to open it now?", ButtonType.YES, ButtonType.NO);
+		success.setHeaderText(file.getName() + " was saved successfully.");
+
+		if (success.showAndWait().get() != ButtonType.YES) return;
+
+		try { Desktop.getDesktop().open(file); }
+		catch (IOException e) { e.printStackTrace(); }
 
 	}
 
