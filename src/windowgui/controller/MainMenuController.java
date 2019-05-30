@@ -1,13 +1,6 @@
 package windowgui.controller;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-
 public class MainMenuController extends BaseController {
-
-	@FXML
-	private Button registerMeetButton, registerAthleteButton, optionsButtion, inputDataButton, exitButton, dataButton,
-		aboutButton;
 
 	public void exit() {
 		System.exit(0);
@@ -26,15 +19,11 @@ public class MainMenuController extends BaseController {
 	}
 
 	public void inputData() {
-		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ThrowData.fxml"));
-	}
-
-	public void optionsPage() {
-
+		this.openFXML("SelectMeet.fxml");
 	}
 
 	public void viewData() {
-		this.<SelectMeetController>openFXML("SelectMeet.fxml", controller -> controller.setFXMLtoOpen("ViewData.fxml"));
+		this.openFXML("SelectMeetToView.fxml");
 	}
 
 }

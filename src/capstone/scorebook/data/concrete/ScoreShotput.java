@@ -11,9 +11,9 @@ public class ScoreShotput extends ScoreThrow { // TODO: one day it would be nice
 
 	private ScoreShotput(ResultSet rs) { super(STRUCT, rs); }
 
-	public ScoreShotput(String meetID, String athleteID, String weatherID, int round, int order, int distance) { // might need to change to double distance later, but that's OK
+	public ScoreShotput(String meetID, String athleteID, String weatherID, int temp, int round, int order, int distance) {
 
-		super(STRUCT, meetID, athleteID, weatherID, round, order, distance);
+		super(STRUCT, meetID, athleteID, weatherID, temp, round, order, distance);
 
 	}
 

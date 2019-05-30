@@ -41,6 +41,11 @@ public class ScorebookDatabase extends Database {
 	public ArrayList<ScoreDiscus> getDiscusScores(String mid) { return query(ScoreDiscus.STRUCT, Score.queryGetAllByMeetID(mid, ScoreDiscus.STRUCT)); } // no static abstract...
 	public ArrayList<ScoreShotput> getShotputScores(String mid) { return query(ScoreShotput.STRUCT, Score.queryGetAllByMeetID(mid, ScoreShotput.STRUCT)); }
 
+	public List<ScoreThrow> getThrowScores(String... mids) {
+		ArrayList<ScoreThrow> scores = new ArrayList();
+		Stream.of(mids).map(mid -> getThrowScores(mid)).forEach(ss -> scores.addAll(ss));
+		return scores;
+	}
 	public List<ScoreThrow> getThrowScores(String mid) { return Stream.concat(getDiscusScores(mid).stream(), getShotputScores(mid).stream()).collect(Collectors.toList()); }
 
 }
