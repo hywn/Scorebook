@@ -13,6 +13,8 @@ Label, CheckBox { -fx-text-fill: #ffffff }
 	-fx-pref-height: 100;
 }
 
+#doneLabel { -fx-text-fill: white; -fx-font-size: 20 }
+
 #mainMenu { -fx-alignment: center; -fx-hgap: 100; -fx-vgap: 20 }
 #mainMenu Button {
 
