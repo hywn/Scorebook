@@ -18,7 +18,7 @@ public class ScorebookDatabase extends Database {
 	public ScorebookDatabase(Path path) throws SQLException { super(path); }
 
 	public static ScorebookDatabase getDB() { // TODO: this might get overloaded or something one day
-		try { return new ScorebookDatabase(Paths.get("test.db")); }
+		try { return new ScorebookDatabase(Paths.get("AthleteDatabase.db")); }
 		catch (SQLException e) { System.err.println("Could not access database ):"); e.printStackTrace(); }
 		return null;
 	}
