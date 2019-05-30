@@ -2,9 +2,6 @@ package capstone.scorebook.data.datatype;
 
 import capstone.scorebook.data.Storable;
 import capstone.scorebook.data.StorableStruct;
-import capstone.scorebook.data.Database;
-import capstone.scorebook.data.concrete.Athlete;
-import capstone.scorebook.data.concrete.Meet;
 
 import java.sql.ResultSet;
 

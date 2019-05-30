@@ -10,7 +10,6 @@ import javafx.scene.input.MouseEvent;
 
 import javax.swing.text.html.ImageView;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
