@@ -10,6 +10,7 @@ import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.FileChooser;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -44,8 +45,6 @@ public class ViewDataController extends MeetController {
 
 		scoreDataTable.setItems(FXCollections.observableList(db.getThrowScores(meet.getID())));
 
-		exportToFile(toCSV());
-
 	}
 
 	public <E> void addColumn(String colName, Function<ScoreThrow, ObservableValue<E>> func) {
@@ -55,6 +54,19 @@ public class ViewDataController extends MeetController {
 		col.setCellValueFactory(p -> func.apply(p.getValue()));
 
 		scoreDataTable.getColumns().add(col);
+
+	}
+
+	public void exportMeet() {
+
+		FileChooser fc = new FileChooser();
+		fc.setTitle("Choose where to export CSV");
+		fc.setInitialFileName(meet.toString() + ".csv");
+		String fileName = fc.showSaveDialog(null).getPath();
+
+		exportToFile(fileName, toCSV());
+
+		//todo: add prompt that says saved! open now? also add multi-meet export
 
 	}
 
@@ -78,9 +90,9 @@ public class ViewDataController extends MeetController {
 
 	}
 
-	private static void exportToFile(String text) {
+	private static void exportToFile(String fileName, String text) {
 
-		try (PrintWriter out = new PrintWriter("test.csv")) {
+		try (PrintWriter out = new PrintWriter(fileName)) {
 			out.println(text);
 		}
 
