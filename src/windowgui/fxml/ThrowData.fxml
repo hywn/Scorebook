@@ -15,7 +15,7 @@
 	<children>
 		<ImageView pickOnBounds="true" preserveRatio="true">
 			<image>
-				<Image url="@../PastData.png" />
+				<Image url="@../DataInput.png" />
 			</image>
 		</ImageView>
 		<GridPane fx:id="menuItemLabels" layoutX="50" layoutY="100" prefHeight="469.0" prefWidth="525.0">

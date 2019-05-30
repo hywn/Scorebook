@@ -11,7 +11,7 @@
 	<children>
       <ImageView pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../PastData.png" />
+            <Image url="@../select meet.png" />
          </image>
       </ImageView>
 		<VBox fx:id="registerAthlete" layoutX="50" layoutY="100" prefHeight="400" prefWidth="500">
