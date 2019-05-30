@@ -1,4 +1,4 @@
-AnchorPane { -fx-background-color: green; -fx-pref-height: 100 }
+AnchorPane { -fx-background-color: green; -fx-pref-height: 100; -fx-background-radius: 10 }
 GridPane { -fx-hgap: 10; -fx-vgap: 10 }
 Label, CheckBox { -fx-text-fill: #ffffff }
 

@@ -8,12 +8,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+import javax.swing.text.html.ImageView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
 public class RegisterMeetController extends BaseController {
+
+	public static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
 	private class StrIntOption {
 		String name;
@@ -28,7 +31,8 @@ public class RegisterMeetController extends BaseController {
 	private TextField addressField, dateField;
 	@FXML
 	private Label doneLabel;
-
+	@FXML
+	private ImageView background;
 
 	public void initialize() {
 		roundOptions.getItems().setAll(new StrIntOption("1-Round Meet", 1),
@@ -37,23 +41,32 @@ public class RegisterMeetController extends BaseController {
 		indoorsOptions.getItems().setAll(new StrIntOption("No", 0),
 						 new StrIntOption("Yes", 1));
 
+		defaults();
+
+		doneLabel.getParent().addEventHandler(MouseEvent.MOUSE_CLICKED, e -> reset());
+	}
+
+	public void defaults() {
+
 		for (ComboBox b : Arrays.asList(roundOptions, indoorsOptions))
 			b.getSelectionModel().selectFirst();
+
+		dateField.setText(todayDate());
+
+		addressField.clear();
+
 	}
 
 	// enter meet into db
 	//NEED TO REMOVE TEMP FROM MEET, AND ADD TO THE TABLE OF DATA WHEN INPUTTING AN ATHLETE THROW
 	public void enter() {
-		
-		int temp=0;
 
-		ScorebookDatabase.getDB().insert(new Meet(getAddress(), getDate(), getRounds(), getSeason(), getIndoors(), temp));
-		roundOptions.getSelectionModel().clearSelection();
-		indoorsOptions.getSelectionModel().clearSelection();
+		ScorebookDatabase.getDB().insert(new Meet(getAddress(), getDate(), getRounds(), getSeason(), getIndoors()));
 
-		addressField.clear();
-		dateField.setText(todayDate());
+		defaults();
+
 		show();
+
 	}
 
 	public void reset() {
@@ -70,12 +83,10 @@ public class RegisterMeetController extends BaseController {
 
 	public int getIndoors() { return indoorsOptions.getValue().num; }
 
-	private static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
-
 	public String todayDate() {
 		return DATE_FORMAT.format(new Date());
 	}
-	
+
 	public String getDate() {
 		return dateField.getText();
 	}
