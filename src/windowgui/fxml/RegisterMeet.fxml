@@ -19,9 +19,6 @@
 		<Label fx:id="doneLabel" layoutX="113.0" layoutY="320.0" prefHeight="92.0" prefWidth="374.0"
 		       text="Meet has been registered successfully!" textAlignment="CENTER" textFill="WHITE"
 		       visible="false" wrapText="true">
-			<font>
-				<Font size="20.0"/>
-			</font>
 		</Label>
 		<GridPane layoutX="53.0" layoutY="107.0" prefHeight="155.0" prefWidth="533.0">
 			<children>
@@ -39,21 +36,6 @@
 				       GridPane.rowIndex="6"/>
 				<TextField fx:id="dateField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 			</children>
-			<columnConstraints>
-				<ColumnConstraints/>
-				<ColumnConstraints/>
-				<ColumnConstraints/>
-			</columnConstraints>
-			<rowConstraints>
-				<RowConstraints/>
-				<RowConstraints/>
-				<RowConstraints/>
-				<RowConstraints/>
-				<RowConstraints/>
-				<RowConstraints/>
-				<RowConstraints/>
-				<RowConstraints/>
-			</rowConstraints>
 		</GridPane>
 	</children>
 </AnchorPane>

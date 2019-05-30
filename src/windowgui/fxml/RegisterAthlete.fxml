@@ -4,38 +4,46 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
 <AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="500"
-	    stylesheets="windowgui/Style.css"
-	    xmlns:fx="http://javafx.com/fxml"
-	    fx:controller="windowgui.controller.RegisterAthleteController">
+	stylesheets="windowgui/Style.css" xmlns:fx="http://javafx.com/fxml"
+	fx:controller="windowgui.controller.RegisterAthleteController">
 	<children>
 		<ImageView pickOnBounds="true" preserveRatio="true">
 			<image>
-				<Image url="@../AthleteRegistration.png"/>
+				<Image url="@../AthleteRegistration.png" />
 			</image>
 		</ImageView>
-		<VBox fx:id="registerAthlete" layoutX="50.0" layoutY="100.0" prefHeight="400" prefWidth="500">
+		<Label fx:id="doneLabel" layoutX="113.0" layoutY="320.0"
+			prefHeight="92.0" prefWidth="374.0"
+			text="Athlete has been registered successfully!" textAlignment="CENTER"
+			visible="false" wrapText="true">
+		</Label>
+		<VBox fx:id="registerAthlete" layoutX="50.0" layoutY="100.0"
+			prefHeight="400" prefWidth="500">
 			<children>
 				<GridPane>
 					<children>
-						<Label text="Last name"/>
-						<Label text="First name" GridPane.columnIndex="1"/>
+						<Label text="Last name" />
+						<Label text="First name" GridPane.columnIndex="1" />
 
-						<TextField fx:id="lastNameField" GridPane.rowIndex="1"/>
-						<TextField fx:id="firstNameField" GridPane.columnIndex="1"
-							   GridPane.rowIndex="1"/>
+						<TextField fx:id="lastNameField" GridPane.rowIndex="1" />
+						<TextField fx:id="firstNameField"
+							GridPane.columnIndex="1" GridPane.rowIndex="1" />
 					</children>
 				</GridPane>
 				<GridPane>
 					<children>
-						<Label text="Year of Graduation"/>
+						<Label text="Year of Graduation" />
 
-						<TextField fx:id="gradYearField" GridPane.rowIndex="1"/>
+						<TextField fx:id="gradYearField" GridPane.rowIndex="1" />
 					</children>
 				</GridPane>
-				<Button fx:id="enterButton" onAction="#enter" text="Enter"/>
+				<Button fx:id="enterButton" onAction="#enter" text="Enter" />
 			</children>
 		</VBox>
-		<fx:include onMouseClicked="#goHome" source="HomeButton.fxml"/>
+		<fx:include onMouseClicked="#goHome"
+			source="HomeButton.fxml" />
 	</children>
 </AnchorPane>

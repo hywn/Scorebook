@@ -1,8 +1,9 @@
 package windowgui.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 import java.util.Arrays;
 
@@ -15,6 +16,8 @@ public class RegisterAthleteController extends BaseController {
 
 	@FXML
 	private TextField lastNameField, firstNameField, schoolField, gradYearField;
+	@FXML
+	private Label doneLabel;
 
 //	@FXML
 //	private CheckBox male, female, other;
@@ -33,6 +36,11 @@ public class RegisterAthleteController extends BaseController {
 	public int getGradYear() {
 		return Integer.parseInt(gradYearField.getText());
 	}
+	
+	@FXML
+	private void initialize() {
+		doneLabel.getParent().addEventHandler(MouseEvent.MOUSE_CLICKED, e -> reset());
+	}
 
 	//enter into database
 	public void enter() {
@@ -44,7 +52,14 @@ public class RegisterAthleteController extends BaseController {
 
 		for (TextField f : Arrays.asList(lastNameField, firstNameField, gradYearField))
 			f.clear();
+		show();
+	}
+	
+	public void reset() {
+		doneLabel.setVisible(false);
+	}
 
-
+	public void show() {
+		doneLabel.setVisible(true);
 	}
 }
