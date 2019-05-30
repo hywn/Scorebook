@@ -14,9 +14,9 @@ public abstract class ScoreThrow extends Score { // TODO: one day it would be ni
 
 	public ScoreThrow(StorableStruct struct, ResultSet rs) { super(struct, rs); }
 
-	public ScoreThrow(StorableStruct struct, String meetID, String athleteID, String weatherID, int round, int order, int distance) {
+	public ScoreThrow(StorableStruct struct, String meetID, String athleteID, String weatherID, int temp, int round, int order, int distance) {
 
-		super(struct, meetID, athleteID, weatherID,
+		super(struct, meetID, athleteID, weatherID, temp,
 		      COLUMN_ROUND, round,
 		      COLUMN_ORDER, order,
 		      COLUMN_DISTANCE, distance);

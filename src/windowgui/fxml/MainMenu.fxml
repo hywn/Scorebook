@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="500" style="-fx-background-radius: 20;" stylesheets="windowgui/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="windowgui.controller.MainMenuController">
+<AnchorPane fx:id="rootPane" prefHeight="600" prefWidth="500"
+	    stylesheets="windowgui/Style.css"
+	    xmlns:fx="http://javafx.com/fxml/1" fx:controller="windowgui.controller.MainMenuController">
 	<children>
 		<ImageView>
 			<image>
-				<Image url="@../MainMenu.png" />
+				<Image url="@../MainMenu.png"/>
 			</image>
 		</ImageView>
 		<GridPane fx:id="mainMenu" layoutX="50" layoutY="100" prefHeight="250" prefWidth="500">
 			<children>
-				<Button onAction="#inputData" text="Record Data" />
-				<Button onAction="#registerAthlete" text="Register a new Athlete" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" />
-				<Button onAction="#registerMeet" text="Register a new Meet" GridPane.rowIndex="1" />
-				<Button onAction="#viewData" text="View past data" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-				<Button onAction="#aboutPage" text="About" GridPane.rowIndex="2" />
-				<Button onAction="#exit" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<Button onAction="#inputData" text="Record Data"/>
+				<Button onAction="#registerAthlete" text="Register a new Athlete" textAlignment="CENTER"
+					wrapText="true" GridPane.columnIndex="1"/>
+				<Button onAction="#registerMeet" text="Register a new Meet" GridPane.rowIndex="1"/>
+				<Button onAction="#viewData" text="View past data" GridPane.columnIndex="1"
+					GridPane.rowIndex="1"/>
+				<Button onAction="#aboutPage" text="About" GridPane.rowIndex="2"/>
+				<Button onAction="#exit" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 			</children>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
 		</GridPane>
 	</children>
 </AnchorPane>
